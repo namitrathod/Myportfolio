@@ -73,7 +73,7 @@ export const portfolioData: PortfolioData = {
       title: "Hiresphere - Applicant Screening System",
       description: "Developed a full-stack hiring platform that reduced application processing time by 35%. Implemented secure role-based authentication and built comprehensive RESTful APIs with CRUD operations.",
       technologies: ["React", "Django", "PostgreSQL", "JWT", "RESTful APIs"],
-      image: "/projects/hiresphere.jpg",
+      image: "",
       githubUrl: "https://github.com/namitrathod/hiresphere",
       liveUrl: "https://hiresphere-demo.com"
     },
@@ -82,7 +82,7 @@ export const portfolioData: PortfolioData = {
       title: "CabGo - Cab Booking Application",
       description: "Enhanced user experience with real-time map integration via Google Maps API. Secured user and payment data with JWT authentication and Stripe API integration.",
       technologies: ["React", "Node.js", "Express", "MongoDB", "Google Maps API", "Stripe"],
-      image: "/projects/cabgo.jpg",
+      image: "",
       githubUrl: "https://github.com/namitrathod/cabgo",
       liveUrl: "https://cabgo-demo.com"
     },
@@ -91,7 +91,7 @@ export const portfolioData: PortfolioData = {
       title: "XR Lab Applications",
       description: "Contributing to XR Lab development by building immersive applications and supporting initiatives that enhance student engagement through innovative extended reality solutions.",
       technologies: ["Unity", "XR Development", "C#", "3D Modeling", "VR/AR"],
-      image: "/projects/xr-lab.jpg",
+      image: "",
       githubUrl: "https://github.com/namitrathod/xr-lab",
       liveUrl: "https://xr-lab-demo.com"
     }

@@ -27,10 +27,10 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // EmailJS configuration - you'll need to replace these with your actual IDs
-      const serviceId = 'service_xurrrex'; // Replace with your EmailJS service ID
-      const templateId = 'template_7tgdm0k'; // Replace with your EmailJS template ID
-      const publicKey = 'iAoIui4FGyEJnGFP9'; // Replace with your EmailJS public key
+      // EmailJS configuration
+      const serviceId = 'service_xurrrex';
+      const templateId = 'template_7tgdm0k';
+      const publicKey = 'iAoIui4FGyEJnGFP9';
       
       // Prepare template parameters
       const templateParams = {

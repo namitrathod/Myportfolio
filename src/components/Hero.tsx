@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate="visible"
+          whileInView="visible"
           viewport={{ once: true }}
           className="text-center"
         >
@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = 'https://via.placeholder.com/128x128/3b82f6/ffffff?text=NR';
+                  target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjM2I4MmY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5OUjwvdGV4dD48L3N2Zz4=';
                 }}
               />
             </div>
