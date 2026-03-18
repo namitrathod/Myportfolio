@@ -82,7 +82,7 @@ export const portfolioData: PortfolioData = {
     about: [
       "I don't just write code; I own the lifecycle of a feature. My journey started with handling scale for 1,000+ concurrent users at Cognizant, where I learned the discipline of enterprise-grade systems. At ScriptChain Health, I'm applying that discipline to the edge of AI—building secure, HIPAA-compliant patient experiences that turn complex medical data into actionable insights.",
       "On the frontend: I focus on performance as a product feature. I've spent years optimizing React and Angular UIs to ensure that even at enterprise scale, the interaction remains instantaneous. I bridge the gap between complex design systems and technical feasibility.",
-      "On the backend: I build for resilience. From designing RESTful APIs in FastAPI to architecting asynchronous task pipelines with Celery and Redis, I ensure that data is secure, schemas are validated, and systems stay up under heavy clinical pressure.",
+      "On the backend: I build for resilience. Whether I'm engineering high-scale microservices in Spring Boot and Java, architecting decoupled .NET Core Web APIs, or building high-performance services in FastAPI and Node.js, I ensure that systems remain secure, validated, and performant under heavy production pressure.",
       "Lately, I've been integrating LLMs into production workflows—not as a novelty, but as a tool to solve unstructured data problems. I focus on structured output validation, cost reduction, and observability.",
     ],
     email: "namitrathod07@gmail.com",
