@@ -76,7 +76,7 @@ export const portfolioData: PortfolioData = {
     role: "Software Engineer",
     tagline: "",
     sublines: [
-      "3+ years building enterprise SaaS — React/TypeScript UIs, FastAPI/Node.js backends, PostgreSQL and cloud infra.",
+      "3+ years building scalable enterprise SaaS — from high-performance frontend architectures to robust, distributed backend systems.",
       "MS Computer Science, University of Houston. Experienced at Cognizant and ScriptChain Health.",
     ],
     about: [
