@@ -1,177 +1,66 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { portfolioData } from '../data/portfolio.ts';
+import { portfolioData, SkillGroup } from '../data/portfolio.ts';
 
-const Skills: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
+// ─── Single skill group ────────────────────────────────────────────────────
+interface SkillGroupBoxProps {
+  group: SkillGroup;
+  index: number;
+}
 
-  const categories = [
-    { id: 'all', name: 'All Skills' },
-    { id: 'frontend', name: 'Frontend' },
-    { id: 'backend', name: 'Backend' },
-    { id: 'database', name: 'Database' },
-    { id: 'devops', name: 'DevOps' },
-    { id: 'other', name: 'Other' },
-  ];
+const SkillGroupBox: React.FC<SkillGroupBoxProps> = ({ group, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 10 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.35, delay: index * 0.06 }}
+    viewport={{ once: true }}
+    className="panel p-5"
+  >
+    {/* Category label */}
+    <p className="text-xs font-mono font-medium tracking-widest uppercase text-ink-faint mb-3">
+      {group.category}
+    </p>
 
-  const filteredSkills = activeCategory === 'all' 
-    ? portfolioData.skills 
-    : portfolioData.skills.filter(skill => skill.category === activeCategory);
+    {/* Skill pills */}
+    <div className="flex flex-wrap gap-2">
+      {group.skills.map(skill => (
+        <span key={skill} className="chip text-ink-secondary">
+          {skill}
+        </span>
+      ))}
+    </div>
+  </motion.div>
+);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+// ─── Skills Section ────────────────────────────────────────────────────────
+const Skills: React.FC = () => (
+  <section id="skills" className="section-pad border-t border-border">
+    <div className="page-container">
+      <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-12 lg:gap-20">
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
-
-  return (
-    <section id="skills" className="section-padding bg-white">
-      <div className="container-max">
+        {/* ── Label col ── */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, x: -8 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
         >
-          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Skills & Technologies
-          </motion.h2>
-          <motion.div variants={itemVariants} className="w-24 h-1 bg-primary-600 mx-auto mb-8"></motion.div>
-          <motion.p variants={itemVariants} className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Here are the technologies and tools I work with to bring ideas to life.
-          </motion.p>
+          <p className="section-label">Skills</p>
+          <p className="text-xs text-ink-faint mt-2 leading-relaxed">
+            Curated. Not exhaustive.
+          </p>
         </motion.div>
 
-        {/* Category Filter */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
-                activeCategory === category.id
-                  ? 'bg-primary-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-              }`}
-            >
-              {category.name}
-            </button>
+        {/* ── Skill groups grid ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {portfolioData.skillGroups.map((group, i) => (
+            <SkillGroupBox key={group.category} group={group} index={i} />
           ))}
-        </motion.div>
+        </div>
 
-        {/* Skills Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {filteredSkills.map((skill, index) => (
-            <motion.div
-              key={skill.name}
-              variants={itemVariants}
-              whileInView="visible"
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">{skill.name}</h3>
-                <span className="text-sm font-medium text-primary-600">{skill.level}%</span>
-              </div>
-              
-              <div className="skill-bar">
-                <motion.div
-                  className="skill-progress"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
-                />
-              </div>
-              
-              <div className="mt-3">
-                <span className="text-xs text-gray-500 uppercase tracking-wide">
-                  {skill.category}
-                </span>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Additional Skills */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 text-center"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">Additional Tools & Technologies</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {['VS Code', 'Git', 'Figma', 'Postman', 'AWS', 'Vercel', 'Netlify', 'Jest', 'Cypress'].map((tool, index) => (
-              <motion.span
-                key={tool}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * index }}
-                className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-100 hover:text-primary-700 transition-colors duration-200"
-              >
-                {tool}
-              </motion.span>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.7 }}
-          className="mt-16 text-center"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 mb-8">Certifications</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: 'AWS Certified Developer', issuer: 'Amazon Web Services' },
-              { name: 'React Developer Certification', issuer: 'Meta' },
-              { name: 'JavaScript Algorithms and Data Structures', issuer: 'freeCodeCamp' }
-            ].map((cert, index) => (
-              <motion.div
-                key={cert.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * index }}
-                className="bg-white p-6 rounded-xl shadow-lg border border-gray-100"
-              >
-                <h4 className="font-semibold text-gray-900 mb-2">{cert.name}</h4>
-                <p className="text-sm text-gray-600">{cert.issuer}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Skills;

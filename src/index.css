@@ -1,39 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Base Reset ─────────────────────────────────────────── */
 @layer base {
   html {
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
-  
+
   body {
     font-family: 'Inter', system-ui, sans-serif;
+    background-color: #F7F5F2;
+    color: #1C1C1C;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Custom scrollbar – minimal */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F0EDE8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C4BFB8;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #9A9A9A;
+  }
+
+  /* Selection color */
+  ::selection {
+    background: #E8F4EE;
+    color: #1B4332;
   }
 }
 
+/* ─── Component Utilities ────────────────────────────────── */
 @layer components {
-  .section-padding {
-    @apply py-16 px-4 sm:px-6 lg:px-8;
+
+  /* Layout wrappers */
+  .page-container {
+    @apply max-w-5xl mx-auto px-6 lg:px-8;
   }
-  
-  .container-max {
-    @apply max-w-7xl mx-auto;
+
+  .section-pad {
+    @apply py-20 lg:py-28;
   }
-  
-  .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent;
+
+  /* Section label – small uppercase tag above headings */
+  .section-label {
+    @apply text-xs font-mono font-medium tracking-widest uppercase text-accent;
   }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+
+  /* Heading styles */
+  .heading-lg {
+    @apply text-3xl lg:text-4xl font-semibold text-ink tracking-tight;
   }
-  
-  .skill-bar {
-    @apply w-full bg-gray-200 rounded-full h-2;
+
+  .heading-md {
+    @apply text-xl lg:text-2xl font-semibold text-ink tracking-tight;
   }
-  
-  .skill-progress {
-    @apply bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full transition-all duration-1000 ease-out;
+
+  /* Soft panel – replaces glassmorphism/gradients */
+  .panel {
+    @apply bg-panel rounded-lg border border-border/60 shadow-card;
+  }
+
+  .panel-tinted {
+    @apply bg-panel-tint rounded-lg border border-accent/10 shadow-card;
+  }
+
+  /* Accent button */
+  .btn-accent {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-md
+           bg-accent text-white text-sm font-medium
+           hover:bg-accent-light transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-accent/30;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-md
+           bg-transparent text-ink-secondary text-sm font-medium
+           border border-border hover:border-accent/40 hover:text-accent
+           transition-colors duration-200
+           focus:outline-none focus:ring-2 focus:ring-accent/20;
+  }
+
+  /* Chip / tag */
+  .chip {
+    @apply inline-block px-2.5 py-0.5 rounded text-xs font-medium
+           bg-canvas-muted text-ink-secondary border border-border/60;
+  }
+
+  .chip-accent {
+    @apply inline-block px-2.5 py-0.5 rounded text-xs font-medium
+           bg-accent/10 text-accent-dark border border-accent/15;
+  }
+
+  /* Card – project / experience */
+  .card {
+    @apply panel transition-all duration-200
+           hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-border;
+  }
+
+  /* Monospace code-style text */
+  .mono {
+    @apply font-mono text-sm text-ink-muted;
   }
 }

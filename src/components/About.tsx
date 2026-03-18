@@ -1,197 +1,117 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { User, MapPin, Mail, Calendar } from 'lucide-react';
 import { portfolioData } from '../data/portfolio.ts';
 
+// ─── About Section ─────────────────────────────────────────────────────────
 const About: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+  const { personal, education } = portfolioData;
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  };
+  // What each type of recruiter needs to see quickly
+  const tracks = [
+    {
+      label: 'Frontend',
+      color: 'text-accent border-accent/20 bg-accent/5',
+      dot: 'bg-accent',
+      points: ['React · Next.js · Angular · TypeScript', 'State management at scale (Redux, Zustand, Context)', 'Component perf: memoization, Lighthouse, Web Vitals', '1,000+ concurrent users — zero UI lag'],
+    },
+    {
+      label: 'Backend',
+      color: 'text-[#c27c3e] border-[#c27c3e]/20 bg-[#c27c3e]/5',
+      dot: 'bg-[#c27c3e]',
+      points: ['FastAPI · Node.js · Java Spring Boot', 'PostgreSQL · Redis · MongoDB · AWS', 'OAuth 2.0 · JWT · async task pipelines', 'API design, query optimization, secure auth'],
+    },
+    {
+      label: 'Full-Stack',
+      color: 'text-[#5b6fa6] border-[#5b6fa6]/20 bg-[#5b6fa6]/5',
+      dot: 'bg-[#5b6fa6]',
+      points: ['End-to-end ownership: API → UI → telemetry', '3+ years in production SaaS environments', 'Cross-functional: product, design, backend teams', 'CI/CD · Azure · Docker · GitHub Actions'],
+    },
+  ];
+
+  const quickFacts = [
+    { label: 'Currently at',  value: 'ScriptChain Health — SWE Intern' },
+    { label: 'Previously',    value: 'Cognizant, 2.5+ years' },
+    { label: 'Location',      value: personal.location },
+    { label: 'Available',     value: 'Full-time, May 2026' },
+  ];
 
   return (
-    <section id="about" className="section-padding bg-gray-50">
-      <div className="container-max">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            About Me
-          </motion.h2>
-          <motion.div variants={itemVariants} className="w-24 h-1 bg-primary-600 mx-auto"></motion.div>
-        </motion.div>
+    <section id="about" className="section-pad border-t border-border">
+      <div className="page-container">
+        <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-12 lg:gap-20">
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Image and personal info */}
+          {/* ── Left label col ── */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -8 }}
             whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
           >
-            <div className="relative">
-              <div className="w-full max-w-md mx-auto">
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                  <img
-                    src={portfolioData.personal.avatar}
-                    alt={portfolioData.personal.name}
-                    className="w-full h-96 object-cover"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjM2I4MmY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5OYW1pdDwvdGV4dD48L3N2Zz4=';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                </div>
-              </div>
-            </div>
-
-            {/* Personal Info Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="bg-white p-4 rounded-lg shadow-md flex items-center gap-3"
-              >
-                <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <User className="w-5 h-5 text-primary-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Name</p>
-                  <p className="font-medium text-gray-900">{portfolioData.personal.name}</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="bg-white p-4 rounded-lg shadow-md flex items-center gap-3"
-              >
-                <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-primary-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Location</p>
-                  <p className="font-medium text-gray-900">{portfolioData.personal.location}</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="bg-white p-4 rounded-lg shadow-md flex items-center gap-3"
-              >
-                <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <Mail className="w-5 h-5 text-primary-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Email</p>
-                  <p className="font-medium text-gray-900">{portfolioData.personal.email}</p>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="bg-white p-4 rounded-lg shadow-md flex items-center gap-3"
-              >
-                <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
-                  <Calendar className="w-5 h-5 text-primary-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Experience</p>
-                  <p className="font-medium text-gray-900">2 Years</p>
-                </div>
-              </motion.div>
-            </div>
+            <p className="section-label">About</p>
           </motion.div>
 
-          {/* Right side - About text */}
+          {/* ── Right content col ── */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: 0.05 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="space-y-6"
+            className="max-w-2xl"
           >
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Who I Am
-              </h3>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                {portfolioData.personal.about}
+            {/* Paragraphs */}
+            <div className="space-y-4 text-ink-secondary leading-relaxed text-[15px]">
+              {personal.about.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
+
+            {/* ── 3-Track strength strip ── */}
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {tracks.map(track => (
+                <div
+                  key={track.label}
+                  className={`rounded-lg border p-4 ${track.color}`}
+                >
+                  <p className="text-[11px] font-mono tracking-widest uppercase font-semibold mb-3">
+                    {track.label}
+                  </p>
+                  <ul className="space-y-1.5">
+                    {track.points.map(pt => (
+                      <li key={pt} className="flex items-start gap-2 text-[12px] leading-snug text-ink-secondary">
+                        <span className={`mt-[5px] w-1 h-1 rounded-full shrink-0 ${track.dot}`} />
+                        {pt}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+
+            {/* Education callout strip */}
+            <div className="mt-6 p-4 rounded-lg border border-accent/15 bg-panel-tint">
+              <p className="text-xs font-mono tracking-wide uppercase text-ink-faint mb-1">
+                Education
               </p>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-gray-900">What I Do</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="bg-white p-4 rounded-lg shadow-md">
-                  <h5 className="font-medium text-gray-900 mb-2">Frontend Development</h5>
-                  <p className="text-gray-600 text-sm">
-                    Creating responsive and interactive user interfaces with modern frameworks and best practices.
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md">
-                  <h5 className="font-medium text-gray-900 mb-2">Backend Development</h5>
-                  <p className="text-gray-600 text-sm">
-                    Building robust server-side applications and APIs with scalable architectures.
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md">
-                  <h5 className="font-medium text-gray-900 mb-2">Database Design</h5>
-                  <p className="text-gray-600 text-sm">
-                    Designing and optimizing database schemas for performance and scalability.
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-lg shadow-md">
-                  <h5 className="font-medium text-gray-900 mb-2">DevOps & Deployment</h5>
-                  <p className="text-gray-600 text-sm">
-                    Setting up CI/CD pipelines and deploying applications to cloud platforms.
-                  </p>
-                </div>
+              <p className="text-sm font-semibold text-ink">{education.degree}</p>
+              <p className="text-sm text-accent font-medium">{education.institution} · {education.period}</p>
+              <div className="mt-2 flex flex-wrap gap-1.5">
+                {education.coursework.map(c => (
+                  <span key={c} className="chip-accent text-xs">{c}</span>
+                ))}
               </div>
             </div>
 
-            <div className="flex flex-wrap gap-4">
-              <a 
-                href="/Resume.pdf" 
-                download="Namit_Rathod_Resume.pdf"
-                className="bg-primary-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-primary-700 transition-colors duration-200 inline-block"
-              >
-                Download Resume
-              </a>
-              <button 
-                onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="border-2 border-primary-600 text-primary-600 px-6 py-3 rounded-lg font-medium hover:bg-primary-600 hover:text-white transition-all duration-200"
-              >
-                View Projects
-              </button>
+            {/* Quick facts strip */}
+            <div className="mt-6 pt-6 border-t border-border grid grid-cols-2 sm:grid-cols-4 gap-6">
+              {quickFacts.map(({ label, value }) => (
+                <div key={label}>
+                  <p className="text-xs text-ink-faint mb-0.5 font-mono tracking-wide uppercase">{label}</p>
+                  <p className="text-sm text-ink font-medium leading-snug">{value}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
