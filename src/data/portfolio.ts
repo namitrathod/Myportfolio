@@ -106,6 +106,18 @@ export const portfolioData: PortfolioData = {
   projects: [
     // ── Featured ──────────────────────────────────────────────────────────────
     {
+      id: "settlement-engine",
+      title: "High-Throughput Settlement Engine",
+      description:
+        "Payment systems require extreme reliability and speed. I engineered this engine using Java 21 Virtual Threads and Spring Boot 3.2 to handle high-concurrency financial transactions. It features a distributed idempotency layer with Redis, a self-healing concurrency handler with Spring Retry (@Version), and an event-driven workflow using Apache Kafka.",
+      result: "Benchmarked at 1,000+ RPS with 100% success rate via Gatling; zero 'double-charge' incidents ensured by sub-millisecond Redis idempotency intercepts.",
+      technologies: ["Java 21", "Spring Boot", "Kafka", "Redis", "PostgreSQL", "OpenTelemetry", "Gatling", "Docker"],
+      track: "Backend",
+      githubUrl: "https://github.com/namitrathod/High-Throughput-Settlement-Engine",
+      liveUrl: "",
+      featured: true,
+    },
+    {
       id: "hiresphere",
       title: "HireSphere — Recruiter Platform",
       description:
@@ -119,13 +131,13 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "capstone-healthcare",
-      title: "Healthcare Clinic Platform",
+      title: "Healthcare Clinic Platform (Capstone Project)",
       description:
         "Bridging legacy systems to modern standards. I modernized a legacy ASP.NET healthcare system by architecting an entirely new React frontend and a decoupled .NET Core Web API, significantly improving UI speed and reducing integration errors.",
       result: "40% faster frontend feature iterations; noticeably faster UI interactions after render optimization.",
       technologies: ["React", "Next.js", "TypeScript", ".NET Core Web API", "ASP.NET MVC", "PostgreSQL", "Azure"],
       track: "Full-Stack",
-      githubUrl: "https://github.com/namitrathod",
+      githubUrl: "", // Removed as requested
       liveUrl: "",
       featured: true,
     },
@@ -242,7 +254,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       category: "Data & Infrastructure",
-      skills: ["PostgreSQL", "MongoDB", "Redis", "MySQL", "AWS (S3, DynamoDB, SES)", "Docker", "Kubernetes", "Azure", "GitHub Actions", "CI/CD", "Structured Logging"],
+      skills: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka", "MySQL", "AWS (S3, DynamoDB, SES)", "Docker", "Kubernetes", "Azure", "GitHub Actions", "OpenTelemetry", "CI/CD", "Structured Logging"],
     },
     {
       category: "AI & LLM",

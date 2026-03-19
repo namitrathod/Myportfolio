@@ -33,40 +33,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, featured = false, in
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.4, delay: index * 0.07 }}
     viewport={{ once: true }}
-    className={`card p-6 flex flex-col gap-4 ${featured ? 'bg-panel-tint' : ''}`}
+    className={`card p-6 flex flex-col gap-5 ${featured ? 'bg-panel-tint' : ''}`}
   >
-    {/* ── Top: Title + track badge + links ── */}
+    {/* ── Top: Title + track badge ── */}
     <div className="flex items-start justify-between gap-3">
       <div className="flex-1 min-w-0 space-y-1.5">
-        {/* Track badge first — catches eye of recruiter scanning for their role */}
         <TrackBadge track={project.track} />
         <h3 className={`text-ink font-semibold leading-snug ${featured ? 'text-base' : 'text-sm'}`}>
           {project.title}
         </h3>
-      </div>
-      <div className="flex items-center gap-2 shrink-0 mt-1">
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-ink-faint hover:text-ink transition-colors"
-            aria-label={`${project.title} GitHub`}
-          >
-            <Github size={15} strokeWidth={1.5} />
-          </a>
-        )}
-        {project.liveUrl && (
-          <a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-ink-faint hover:text-accent transition-colors"
-            aria-label={`${project.title} live demo`}
-          >
-            <ExternalLink size={14} strokeWidth={1.5} />
-          </a>
-        )}
       </div>
     </div>
 
@@ -76,16 +51,46 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, featured = false, in
     </p>
 
     {/* ── Result / Impact line ── */}
-    <p className="text-xs text-accent font-medium border-l-2 border-accent/30 pl-3 leading-snug">
-      {project.result}
-    </p>
+    <div className="space-y-4 pt-1">
+      <p className="text-xs text-accent font-medium border-l-2 border-accent/30 pl-3 leading-snug">
+        {project.result}
+      </p>
 
-    {/* ── Stack chips ── */}
-    <div className="flex flex-wrap gap-1.5 pt-1">
-      {project.technologies.map(tech => (
-        <span key={tech} className="chip">{tech}</span>
-      ))}
+      {/* ── Stack chips ── */}
+      <div className="flex flex-wrap gap-1.5 ">
+        {project.technologies.slice(0, 6).map(tech => ( // Cap at 6 for readability
+          <span key={tech} className="chip">{tech}</span>
+        ))}
+      </div>
     </div>
+
+    {/* ── Links: High-visibility buttons ── */}
+    {(project.githubUrl || project.liveUrl) && (
+      <div className="flex items-center gap-3 pt-3 border-t border-border mt-auto">
+        {project.githubUrl && (
+          <a
+            href={project.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-ghost !px-3 !py-2 !text-[10px] uppercase tracking-widest font-mono group flex-1 justify-center gap-2"
+          >
+            <Github size={14} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+            <span>Source</span>
+          </a>
+        )}
+        {project.liveUrl && (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-accent !px-3 !py-2 !text-[10px] uppercase tracking-widest font-mono group flex-1 justify-center gap-2"
+          >
+            <ExternalLink size={13} strokeWidth={1.5} className="group-hover:scale-110 transition-transform" />
+            <span>Demo</span>
+          </a>
+        )}
+      </div>
+    )}
   </motion.div>
 );
 
@@ -121,7 +126,7 @@ const Projects: React.FC = () => {
             {/* Featured: 2-column grid */}
             <div>
               <p className="text-xs text-ink-faint font-mono tracking-wide uppercase mb-4">Featured</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {featured.map((p, i) => (
                   <ProjectCard key={p.id} project={p} featured index={i} />
                 ))}
@@ -132,7 +137,7 @@ const Projects: React.FC = () => {
             {additional.length > 0 && (
               <div>
                 <p className="text-xs text-ink-faint font-mono tracking-wide uppercase mb-4">More work</p>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {additional.map((p, i) => (
                     <ProjectCard key={p.id} project={p} index={i + featured.length} />
                   ))}
