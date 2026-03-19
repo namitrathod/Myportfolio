@@ -102,7 +102,7 @@ const About: React.FC = () => {
             </div>
 
             {/* Quick facts strip */}
-            <div className="mt-6 pt-6 border-t border-border grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <div className="mt-6 pt-6 border-t border-border grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
               {quickFacts.map(({ label, value }) => (
                 <div key={label}>
                   <p className="text-xs text-ink-faint mb-0.5 font-mono tracking-wide uppercase">{label}</p>

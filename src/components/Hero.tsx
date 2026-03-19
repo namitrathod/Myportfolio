@@ -50,7 +50,7 @@ const Hero: React.FC = () => {
           {/* ── Name ── */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-ink tracking-tight leading-tight mb-5"
+            className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold text-ink tracking-tight leading-tight mb-5"
             style={{ letterSpacing: '-0.03em' }}
           >
             {personal.name}
