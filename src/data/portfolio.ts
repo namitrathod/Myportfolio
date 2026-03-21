@@ -127,7 +127,7 @@ export const portfolioData: PortfolioData = {
       track: "Full-Stack",
       githubUrl: "https://github.com/namitrathod",
       liveUrl: "",
-      featured: true,
+      featured: false,
     },
     {
       id: "capstone-healthcare",
@@ -226,6 +226,18 @@ export const portfolioData: PortfolioData = {
       liveUrl: "",
       featured: false,
     },
+    {
+      id: "distributed-job-system",
+      title: "Distributed Job Processing System",
+      description:
+        "Designed and built a distributed job processing system in Go processing 100K+ asynchronous tasks with priority scheduling and scalable worker pools. Architected a Kafka-based task pipeline for reliable delivery and automatic load distribution; implemented retry backoff, dead-letter queues, and idempotent execution for fault tolerance.",
+      result: "Reduced state lookup latency by 60% with Redis caching; deployed on Kubernetes with autoscaling policies and integrated Prometheus/Grafana for real-time observability.",
+      technologies: ["Go", "Kafka", "Redis", "Kubernetes", "Prometheus", "Grafana", "Docker"],
+      track: "Backend",
+      githubUrl: "https://github.com/namitrathod",
+      liveUrl: "",
+      featured: true,
+    },
   ],
 
   experience: [
@@ -286,7 +298,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       category: "Backend",
-      skills: ["Node.js", "FastAPI", "Python", "Java (Spring Boot)", "Express.js", "REST APIs", "GraphQL", "OAuth 2.0", "JWT", "Celery", "BFF Pattern", "API Versioning"],
+      skills: ["Go", "Node.js", "FastAPI", "Python", "Java (Spring Boot)", "Express.js", "REST APIs", "GraphQL", "OAuth 2.0", "JWT", "Celery", "BFF Pattern", "API Versioning"],
     },
     {
       category: "Data & Infrastructure",
