@@ -104,6 +104,18 @@ export const portfolioData: PortfolioData = {
   ],
 
   projects: [
+    {
+      id: "inbox-sense",
+      title: "InboxSense — AI Email Intelligence",
+      description:
+        "Architected a Semantic Email Intelligence platform using Next.js 14 and Gemini 2.5. Engineered a robust RAG pipeline with ChromaDB to transform raw Gmail data into a searchable knowledge base, featuring 3072-dim vector embeddings and localized storage for privacy.",
+      result: "Reduced email noise by 70% via intelligent filtering; implemented a background sync engine with exponential backoff for stable indexing of thousands of emails.",
+      technologies: ["Next.js 14", "Gemini 2.5", "ChromaDB", "Prisma", "Tailwind CSS", "Docker", "OAuth 2.0"],
+      track: "AI / Systems",
+      githubUrl: "https://github.com/namitrathod/InboxSense",
+      liveUrl: "",
+      featured: true,
+    },
     // ── Featured ──────────────────────────────────────────────────────────────
     {
       id: "settlement-engine",
@@ -298,15 +310,15 @@ export const portfolioData: PortfolioData = {
     },
     {
       category: "Backend",
-      skills: ["Go", "Node.js", "FastAPI", "Python", "Java (Spring Boot)", "Express.js", "REST APIs", "GraphQL", "OAuth 2.0", "JWT", "Celery", "BFF Pattern", "API Versioning"],
+      skills: ["Go", "Node.js", "FastAPI", "Python", "Java (Spring Boot)", "Express.js", "Prisma", "REST APIs", "GraphQL", "OAuth 2.0", "JWT", "Celery", "BFF Pattern", "API Versioning"],
     },
     {
       category: "Data & Infrastructure",
-      skills: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka", "MySQL", "AWS (S3, DynamoDB, SES)", "Docker", "Kubernetes", "Azure", "GitHub Actions", "OpenTelemetry", "CI/CD", "Structured Logging"],
+      skills: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka", "MySQL", "ChromaDB", "AWS (S3, DynamoDB, SES)", "Docker", "Kubernetes", "Azure", "GitHub Actions", "OpenTelemetry", "CI/CD", "Structured Logging"],
     },
     {
       category: "AI & LLM",
-      skills: ["GPT-4o", "LangChain", "Prompt Engineering", "Structured Outputs", "RAG", "Tool Calling", "Whisper ASR", "PyTorch", "Hugging Face", "Model Quantization (NF4)"],
+      skills: ["GPT-4o", "Gemini 2.5", "LangChain", "Prompt Engineering", "Structured Outputs", "RAG", "Tool Calling", "Whisper ASR", "PyTorch", "Hugging Face", "Model Quantization (NF4)"],
     },
   ],
 
