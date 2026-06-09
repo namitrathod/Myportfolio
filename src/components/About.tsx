@@ -12,7 +12,7 @@ const About: React.FC = () => {
       label: 'Frontend',
       color: 'text-accent border-accent/20 bg-accent/5',
       dot: 'bg-accent',
-      points: ['React · Next.js · Angular · TypeScript', 'State management at scale (Redux, Zustand, Context)', 'Component perf: memoization, Lighthouse, Web Vitals', '1,000+ concurrent users — zero UI lag'],
+      points: ['React · Next.js · Angular · TypeScript', 'State management at scale (Redux, Zustand, Context)', 'Component perf: memoization, Lighthouse, Web Vitals', '1,000+ concurrent users, zero UI lag'],
     },
     {
       label: 'Backend',
@@ -28,11 +28,18 @@ const About: React.FC = () => {
     },
   ];
 
+  // Headline tools the user is actively working with
+  const focusSkills = [
+    'MCP', 'LangGraph', 'Azure OpenAI', 'Claude', 'GPT-4o', 'NeMo Guardrails',
+    'FHIR', 'FastAPI', '.NET 8', 'RAG', 'GraphRAG', 'Semantic Kernel',
+    'Docker', 'CI/CD', 'HIPAA',
+  ];
+
   const quickFacts = [
-    { label: 'Currently at',  value: 'ScriptChain Health — SWE Intern' },
-    { label: 'Previously',    value: 'Cognizant, 2.5+ years' },
-    { label: 'Location',      value: personal.location },
-    { label: 'Available',     value: 'Full-time, May 2026' },
+    { label: 'Status',        value: 'Open to work · Seeking full-time AI Engineer roles' },
+    { label: 'Focus',         value: 'Agentic AI · Healthcare' },
+    { label: 'Education',     value: 'M.S. Computer Science, UHCL' },
+    { label: 'Available',     value: 'Full-time, globally' },
   ];
 
   return (
@@ -65,12 +72,58 @@ const About: React.FC = () => {
               ))}
             </div>
 
+            {/* ── Core focus chips ── */}
+            <div className="mt-6">
+              <p className="text-xs font-mono tracking-widest uppercase text-ink-faint mb-3">
+                Core Focus
+              </p>
+              <motion.div
+                className="flex flex-wrap gap-2"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-40px' }}
+                variants={{
+                  hidden: {},
+                  visible: { transition: { staggerChildren: 0.03 } },
+                }}
+              >
+                {focusSkills.map(skill => (
+                  <motion.span
+                    key={skill}
+                    variants={{
+                      hidden: { opacity: 0, y: 8 },
+                      visible: { opacity: 1, y: 0 },
+                    }}
+                    whileHover={{ y: -2, scale: 1.05 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+                    className="chip-accent cursor-default"
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </motion.div>
+            </div>
+
             {/* ── 3-Track strength strip ── */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <motion.div
+              className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.12 } },
+              }}
+            >
               {tracks.map(track => (
-                <div
+                <motion.div
                   key={track.label}
-                  className={`rounded-lg border p-4 ${track.color}`}
+                  variants={{
+                    hidden: { opacity: 0, y: 16 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                  }}
+                  whileHover={{ y: -4 }}
+                  className={`rounded-lg border p-4 transition-shadow hover:shadow-card-hover ${track.color}`}
                 >
                   <p className="text-[11px] font-mono tracking-widest uppercase font-semibold mb-3">
                     {track.label}
@@ -83,9 +136,9 @@ const About: React.FC = () => {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Education callout strip */}
             <div className="mt-6 p-4 rounded-lg border border-accent/15 bg-panel-tint">

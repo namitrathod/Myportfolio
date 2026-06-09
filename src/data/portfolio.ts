@@ -1,6 +1,6 @@
 // ─── Portfolio Content ───────────────────────────────────────────────────────
 // Single source of truth for all portfolio content.
-// Edit here — no need to touch any component files.
+// Edit here. No need to touch any component files.
 
 // Track signals displayed on project cards
 export type ProjectTrack = 'Full-Stack' | 'Backend' | 'Frontend' | 'AI / Systems';
@@ -76,14 +76,15 @@ export const portfolioData: PortfolioData = {
     role: "Software Engineer",
     tagline: "",
     sublines: [
-      "3+ years building scalable enterprise SaaS — from high-performance frontend architectures to robust, distributed backend systems.",
+      "3+ years building scalable enterprise SaaS, from high-performance frontend architectures to robust, distributed backend systems.",
       "MS Computer Science, University of Houston. Experienced at Cognizant and ScriptChain Health.",
     ],
     about: [
-      "I don't just write code; I own the lifecycle of a feature. My journey started with handling scale for 1,000+ concurrent users at Cognizant, where I learned the discipline of enterprise-grade systems. At ScriptChain Health, I'm applying that discipline to the edge of AI—building secure, HIPAA-compliant patient experiences that turn complex medical data into actionable insights.",
-      "On the frontend: I focus on performance as a product feature. I've spent years optimizing React and Angular UIs to ensure that even at enterprise scale, the interaction remains instantaneous. I bridge the gap between complex design systems and technical feasibility.",
-      "On the backend: I build for resilience. Whether I'm engineering high-scale microservices in Spring Boot and Java, architecting decoupled .NET Core Web APIs, or building high-performance services in FastAPI and Node.js, I ensure that systems remain secure, validated, and performant under heavy production pressure.",
-      "Lately, I've been integrating LLMs into production workflows—not as a novelty, but as a tool to solve unstructured data problems. I focus on structured output validation, cost reduction, and observability.",
+      "I'm an AI Engineer and full-stack software engineer with 3+ years of experience building production systems at the intersection of healthcare, agentic AI, and distributed backend infrastructure.",
+      "Most recently, I built an MCP server at ScriptChain Health that connected FHIR patient records and a proprietary food and exercise database as Claude-callable tools, enabling a LangGraph-based agentic platform to generate fully personalized cardiac care plans grounded in each patient's live medical history. I also integrated NVIDIA NeMo Guardrails to enforce 100% clinical guideline compliance across all AI outputs.",
+      "At Nasafitness, I engineered an Azure OpenAI GPT-4o pipeline that eliminated manual clinical documentation for 100+ patient sessions, built a context pruning algorithm that improved inference accuracy while cutting token costs by 80%, and used Semantic Kernel to guarantee deterministic JSON output for seamless EHR integration.",
+      "My core stack spans Python, Java, C#, FastAPI, .NET 8, React, GraphQL, LangGraph, and cloud infrastructure on AWS and Azure. I'm deeply interested in agentic AI systems, LLM orchestration, and building AI products that work reliably in high-stakes domains like healthcare.",
+      "Completed my M.S. in Computer Science at the University of Houston-Clear Lake (GPA: 3.52) and actively seeking full-time AI Engineer roles globally, open to US, Canada, UAE, Singapore, Germany, and Ireland.",
     ],
     email: "namitrathod07@gmail.com",
     phone: "+1-346-434-9556",
@@ -98,7 +99,7 @@ export const portfolioData: PortfolioData = {
     "3+ yrs industry",
     "ScriptChain Health",
     "Cognizant Alumni",
-    "MS CS — UH",
+    "MS CS, UH",
     "Frontend · Backend · Full-Stack",
     "Open to Relocation",
   ],
@@ -106,7 +107,7 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       id: "inbox-sense",
-      title: "InboxSense — AI Email Intelligence",
+      title: "InboxSense - AI Email Intelligence",
       description:
         "Architected a Semantic Email Intelligence platform using Next.js 14 and Gemini 2.5. Engineered a robust RAG pipeline with ChromaDB to transform raw Gmail data into a searchable knowledge base, featuring 3072-dim vector embeddings and localized storage for privacy.",
       result: "Reduced email noise by 70% via intelligent filtering; implemented a background sync engine with exponential backoff for stable indexing of thousands of emails.",
@@ -131,7 +132,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "hiresphere",
-      title: "HireSphere — Recruiter Platform",
+      title: "HireSphere - Recruiter Platform",
       description:
         "Recruiting is a data problem. I built HireSphere to turn messy, unstructured PDF resumes into validated structured data using LLMs. It features a Next.js dashboard with memoized rendering and a FastAPI backend with Redis task queues for high-throughput processing.",
       result: "Dashboard handles 1,000+ candidate profiles without UI lag; LLM token cost reduced 30%, page load improved 40%.",
@@ -155,7 +156,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "fair-kv-cache",
-      title: "Fair-KV Cache — LLM Serving",
+      title: "Fair-KV Cache - LLM Serving",
       description:
         "AI scalability is about fairness. I engineered a backend system to enforce KV quotas for multi-tenant LLM inference, ensuring that bursty workloads from one tenant don't degrade performance for others. Built with FastAPI and monitored with Prometheus.",
       result: "Victim-tenant P95 latency stable under adversarial burst; evictions near zero across workloads.",
@@ -216,7 +217,7 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "cabgo",
-      title: "CabGo — Ride-Hailing Ecosystem",
+      title: "CabGo - Ride-Hailing Ecosystem",
       description:
         "Architected a high-concurrency MERN stack application for real-time ride-hailing. The platform features low-latency, bi-directional communication between drivers and riders, optimized for mobile-first user experiences.",
       result: "Implemented real-time event streaming via Socket.io for instantaneous ride requests and live location tracking; secured multi-role workflows with JWT and optimized asset handling with Cloudinary.",
@@ -255,20 +256,48 @@ export const portfolioData: PortfolioData = {
   experience: [
     {
       id: "scriptchain",
-      company: "ScriptChain Health",
-      role: "Software Engineer Intern",
-      period: "Jan 2026 – Present",
-      location: "California, US (Remote)",
+      company: "ScriptChain Health · Part-time",
+      role: "Software Engineer",
+      period: "Jan 2026 - May 2026 · 5 mos",
+      location: "California, United States · Remote",
       bullets: [
-        "Architected a Backend-For-Frontend (BFF) pattern in FastAPI to parse longitudinal FHIR medical records, reducing network JSON payloads by 80% and achieving O(1) rendering speeds on Angular dashboards.",
-        "Optimized high-concurrency healthcare analytics UI in React + TypeScript — reduced rendering latency by 15% through improved component composition, memoization strategies, and state isolation.",
-        "Integrated AI-driven food and exercise prediction services; exposed structured inference APIs delivering real-time recommendations to frontend dashboards.",
-        "Implemented OAuth 2.0 and JWT-based authentication across distributed services; secured patient data access across clinical workflows.",
-        "Designed asynchronous background workflows using Celery and Redis for heavy patient dataset queries and EHR sync, ensuring high availability under concurrent clinical usage.",
-        "Instrumented services with Azure Application Insights for structured logging, A/B testing of UI layouts, and production telemetry — improving issue detection and resolution time.",
-        "Integrated automated testing (Jest, React Testing Library) in a HIPAA-compliant environment; resolved 10+ critical UI defects during UAT using GitHub Copilot-assisted test generation.",
+        "Architected a dual-source MCP server (FHIR EHR + proprietary food/exercise DB) cutting LLM context preparation by 60% across a LangGraph agentic care plan platform.",
+        "Designed a GraphQL abstraction layer over Epic/Cerner FHIR APIs, eliminating 80% of EHR payload overhead and reducing patient data latency for real-time agentic AI pipelines.",
+        "Guaranteed 100% AHA and U.S. Dietary Guideline compliance across all AI-generated care plans via NVIDIA NeMo Guardrails integrated into a multi-agent LangGraph orchestration layer.",
+        "Eliminated multi-step manual care plan generation by delivering an end-to-end async FastAPI + Angular full-stack system with real-time AI-to-patient communication.",
+        "Reduced deployment time by 82% and release errors by 70% via Docker containerization and a CI/CD pipeline with automated Pytest suites and PR validation gates.",
       ],
-      stack: ["React", "TypeScript", "Angular", "FastAPI", "Python", "AWS (DynamoDB, SES, S3)", "Celery", "Redis", "Azure App Insights", "JWT", "OAuth 2.0", "Jest"],
+      stack: ["Python", "FastAPI", "Angular", "AWS SageMaker", "Amazon DynamoDB", "AWS", "Machine Learning", "Agentic AI Development", "GraphQL", "NeMo Guardrails", "Claude Code", "LangGraph", "Model Context Protocol (MCP)"],
+    },
+    {
+      id: "nasafitness",
+      company: "Nasafitness LLC · Part-time",
+      role: "Software Engineer",
+      period: "Aug 2025 - Jan 2026 · 6 mos",
+      location: "Houston, Texas, United States · Hybrid",
+      bullets: [
+        "Eliminated manual clinical documentation for 100+ patient sessions by engineering an Azure OpenAI GPT-4o + .NET 8 pipeline that auto-synthesized Telehealth transcripts and questionnaires into structured wellness care plans.",
+        "Improved GPT-4o accuracy and cut token costs by 80% via a client-side context pruning algorithm that stripped conversational noise from transcripts before inference.",
+        "Delivered a 79% faster frontend (4.2s to 0.9s) by modernizing a legacy ASP.NET Web Forms monolith to React 18 + .NET 8 Web API, reducing technical debt by 60%.",
+        "Cut clinical referral processing time 87% (15 min to 2 min) via RingCentral API async integration for HIPAA-compliant automated faxing between physicians and specialists.",
+        "Maintained 99.9% uptime across 6 microservices, slashing deploy time 83% via Azure Key Vault, Application Insights, and a CI/CD pipeline with full automated test coverage.",
+      ],
+      stack: ["C# / .NET 8", "ASP.NET Core Web API", "React", "Azure OpenAI", "Semantic Kernel", "Prompt Engineering", "LLM Orchestration", "Microsoft Graph", "Microsoft Teams", "Acuity Scheduling", "RingCentral API", "Microsoft SQL Server", "REST APIs / Webhooks", "Background Services", "Azure", "Azure Functions", "Azure Key Vault", "Azure Application Insights", "CI/CD", "Docker", "HIPAA"],
+    },
+    {
+      id: "uhcl-gra",
+      company: "University of Houston-Clear Lake · Part-time",
+      role: "Graduate Research Assistant",
+      period: "Jan 2025 - Aug 2025 · 8 mos",
+      location: "United States · On-site",
+      bullets: [
+        "Engineered robust ETL and data preprocessing pipelines to ingest, clean, and vectorize large-scale multimodal datasets; implemented parallel processing techniques to handle high-volume text and tabular features efficiently.",
+        "Designed and implemented end-to-end machine learning pipelines using Python, Scikit-Learn, and PyTorch, automating feature selection, hyperparameter tuning, and cross-validation protocols to ensure model stability.",
+        "Developed advanced Natural Language Processing (NLP) workflows to extract semantic insights from unstructured text corpora; utilized Transformer-based tokenization and word embedding techniques (BERT/Word2Vec) to map raw text to domain-specific taxonomies.",
+        "Accelerated experimental model training loops and evaluation runtimes by optimizing data loaders, eliminating pipeline bottlenecks, and implementing vectorized operations to scale processing efficiency.",
+        "Conducted rigorous statistical analysis, error profiling, and metric benchmarking (F1-score, ROC-AUC) on deep learning models, documenting architectural performance to validate research integrity and support academic publications.",
+      ],
+      stack: ["Natural Language Processing (NLP)", "Machine Learning", "Deep Learning", "Feature Extraction", "Predictive Modeling", "Pandas", "NumPy", "Scikit-Learn", "PyTorch"],
     },
     {
       id: "cognizant-swe",
@@ -283,7 +312,7 @@ export const portfolioData: PortfolioData = {
         "Architected reusable Fluent UI design-system components across business units, reducing duplicate UI code by 25% and accelerating cross-team development velocity.",
         "Integrated OAuth 2.0 / JWT role access control, reducing unauthorized access incidents by 40% across financial and retail enterprise clients.",
         "Enhanced GitHub Actions CI/CD pipelines with automated validation and testing, reducing deployment-related errors by 20%.",
-        "Led the Buddy Mentor program — structured weekly technical mentorship and performance feedback for 5+ interns.",
+        "Led the Buddy Mentor program, providing structured weekly technical mentorship and performance feedback for 5+ interns.",
       ],
       stack: ["React", "TypeScript", "Angular", "Node.js", "Java (Spring Boot)", "PostgreSQL", "Redis", "OAuth 2.0", "JWT", "GitHub Actions", "Fluent UI"],
     },
@@ -295,9 +324,9 @@ export const portfolioData: PortfolioData = {
       location: "Bengaluru, India",
       bullets: [
         "Built a React admin dashboard for 20+ customer support agents with Node.js API endpoints featuring pagination and search filters on PostgreSQL.",
-        "Reduced user profile query execution from 3.2s to under 300ms by implementing composite indexes — fix reviewed and deployed to production.",
+        "Reduced user profile query execution from 3.2s to under 300ms by implementing composite indexes; fix reviewed and deployed to production.",
         "Implemented JWT + bcrypt authentication in Node.js backend; improved platform security and reduced login-related issues.",
-        "Built type-safe React components, role-based UI access controls, and CI/CD pipelines with GitHub Actions — reduced bug resolution time by 25% during critical release cycles.",
+        "Built type-safe React components, role-based UI access controls, and CI/CD pipelines with GitHub Actions, reducing bug resolution time by 25% during critical release cycles.",
       ],
       stack: ["React", "Angular", "Node.js", "PostgreSQL", "JWT", "bcrypt", "GitHub Actions", "REST APIs"],
     },
@@ -331,5 +360,5 @@ export const portfolioData: PortfolioData = {
     awards: ["Best Student Event of the Year"],
   },
 
-  closingLine: "Available for full-time roles starting May 2026. Houston, TX based — open to relocation nationwide.",
+  closingLine: "Available for full-time roles starting May 2026. Houston, TX based, open to relocation nationwide.",
 };

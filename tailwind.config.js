@@ -59,6 +59,13 @@ module.exports = {
       animation: {
         'fade-up': 'fadeUp 0.5s ease-out forwards',
         'fade-in': 'fadeIn 0.4s ease-out forwards',
+        'float': 'float 6s ease-in-out infinite',
+        'float-slow': 'float 9s ease-in-out infinite',
+        'blob': 'blob 18s ease-in-out infinite',
+        'blob-slow': 'blob 26s ease-in-out infinite',
+        'shimmer': 'shimmer 6s linear infinite',
+        'bob': 'bob 1.8s ease-in-out infinite',
+        'caret-blink': 'caretBlink 1s steps(1) infinite',
       },
       keyframes: {
         fadeUp: {
@@ -68,6 +75,28 @@ module.exports = {
         fadeIn: {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-12px)' },
+        },
+        blob: {
+          '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(24px, -32px) scale(1.08)' },
+          '66%': { transform: 'translate(-22px, 18px) scale(0.94)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+          '100%': { backgroundPosition: '0% 50%' },
+        },
+        bob: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(4px)' },
+        },
+        caretBlink: {
+          '0%, 50%': { opacity: '1' },
+          '50.01%, 100%': { opacity: '0' },
         },
       },
       boxShadow: {

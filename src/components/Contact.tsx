@@ -93,13 +93,31 @@ const Contact: React.FC = () => {
             </p>
 
             {/* ── Contact rows ── */}
-            <div className="space-y-4">
+            <motion.div
+              className="space-y-4"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
+              variants={{
+                hidden: {},
+                visible: { transition: { staggerChildren: 0.08 } },
+              }}
+            >
               {contactItems.map(({ icon: Icon, label, value, href, id, copyable }) => (
-                <div key={id} className="flex items-center gap-4">
+                <motion.div
+                  key={id}
+                  variants={{
+                    hidden: { opacity: 0, x: -12 },
+                    visible: { opacity: 1, x: 0, transition: { duration: 0.35 } },
+                  }}
+                  className="flex items-center gap-4 group"
+                >
 
                   {/* Icon badge */}
-                  <div className="w-8 h-8 rounded bg-canvas-soft border border-border flex items-center justify-center shrink-0">
-                    <Icon size={14} strokeWidth={1.5} className="text-ink-muted" />
+                  <div className="w-8 h-8 rounded bg-canvas-soft border border-border flex items-center justify-center shrink-0
+                                  transition-all duration-200 group-hover:border-accent/40 group-hover:bg-accent/5
+                                  group-hover:scale-110">
+                    <Icon size={14} strokeWidth={1.5} className="text-ink-muted transition-colors group-hover:text-accent" />
                   </div>
 
                   {/* Label + value */}
@@ -122,7 +140,7 @@ const Contact: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Copy button — email only */}
+                  {/* Copy button, email only */}
                   {copyable && (
                     <button
                       onClick={copyEmail}
@@ -137,9 +155,9 @@ const Contact: React.FC = () => {
                       }
                     </button>
                   )}
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
           </motion.div>
         </div>

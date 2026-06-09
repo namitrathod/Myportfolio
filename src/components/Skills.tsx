@@ -14,7 +14,8 @@ const SkillGroupBox: React.FC<SkillGroupBoxProps> = ({ group, index }) => (
     whileInView={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.35, delay: index * 0.06 }}
     viewport={{ once: true }}
-    className="panel p-5"
+    whileHover={{ y: -3 }}
+    className="panel p-5 transition-shadow hover:shadow-card-hover"
   >
     {/* Category label */}
     <p className="text-xs font-mono font-medium tracking-widest uppercase text-ink-faint mb-3">
@@ -24,9 +25,14 @@ const SkillGroupBox: React.FC<SkillGroupBoxProps> = ({ group, index }) => (
     {/* Skill pills */}
     <div className="flex flex-wrap gap-2">
       {group.skills.map(skill => (
-        <span key={skill} className="chip text-ink-secondary">
+        <motion.span
+          key={skill}
+          whileHover={{ y: -2, scale: 1.05 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 18 }}
+          className="chip text-ink-secondary cursor-default hover:border-accent/40 hover:text-accent hover:bg-accent/5"
+        >
           {skill}
-        </span>
+        </motion.span>
       ))}
     </div>
   </motion.div>

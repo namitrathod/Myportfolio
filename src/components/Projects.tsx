@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, ExternalLink, ChevronDown, Rocket, Code2, Cpu, Layout } from 'lucide-react';
 import { portfolioData, Project, ProjectTrack } from '../data/portfolio.ts';
+import TiltCard from './TiltCard.tsx';
 
 // ─── Track Config ───────────────────────────────────────────────────────────
 const TRACK_CONFIG: Record<ProjectTrack, { icon: any, label: string, color: string }> = {
@@ -32,8 +33,8 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.3, delay: index * 0.05 }}
-    className="card p-6 flex flex-col gap-5 bg-panel/50 hover:bg-panel-tint transition-colors border border-border/50"
   >
+   <TiltCard className="card p-6 flex flex-col gap-5 h-full bg-panel/50 hover:bg-panel-tint transition-colors border border-border/50">
     <div className="flex items-start justify-between gap-3">
       <div className="flex-1 min-w-0 space-y-1.5">
         <TrackBadge track={project.track} />
@@ -85,6 +86,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
         )}
       </div>
     )}
+   </TiltCard>
   </motion.div>
 );
 

@@ -2,6 +2,16 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { ArrowDown, Github, Linkedin, Mail, FileText } from 'lucide-react';
 import { portfolioData } from '../data/portfolio.ts';
+import Typewriter from './Typewriter.tsx';
+import Magnetic from './Magnetic.tsx';
+
+// Roles cycled through by the hero typewriter
+const ROLES = [
+  'Full-Stack Engineer',
+  'Backend Systems Architect',
+  'Frontend Performance Specialist',
+  'AI/ML Engineer',
+];
 
 // ─── Stagger container + child variants ────────────────────────────────────
 // Using Variants avoids the TS issue with spreading inline transition objects.
@@ -31,8 +41,28 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex flex-col justify-center pt-14"
+      className="relative min-h-screen flex flex-col justify-center pt-14 overflow-hidden"
     >
+      {/* ── Decorative animated background ── */}
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
+        <div className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl animate-blob" />
+        <div className="absolute top-1/3 -right-16 h-80 w-80 rounded-full bg-accent-light/10 blur-3xl animate-blob-slow" />
+        <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-panel-tint/70 blur-3xl animate-float-slow" />
+        {/* Faint dotted grid for texture */}
+        <div
+          className="absolute inset-0 opacity-[0.4]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle, #C4BFB8 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+            maskImage:
+              'radial-gradient(ellipse 70% 60% at 50% 35%, black 0%, transparent 75%)',
+            WebkitMaskImage:
+              'radial-gradient(ellipse 70% 60% at 50% 35%, black 0%, transparent 75%)',
+          }}
+        />
+      </div>
+
       <div className="page-container">
         <motion.div
           variants={containerVariants}
@@ -50,11 +80,20 @@ const Hero: React.FC = () => {
           {/* ── Name ── */}
           <motion.h1
             variants={itemVariants}
-            className="text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold text-ink tracking-tight leading-tight mb-5"
+            className="text-gradient-accent text-3xl xs:text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight mb-5 pb-1"
             style={{ letterSpacing: '-0.03em' }}
           >
             {personal.name}
           </motion.h1>
+
+          {/* ── Rotating role (typewriter) ── */}
+          <motion.p
+            variants={itemVariants}
+            className="text-lg sm:text-2xl font-medium text-ink-secondary mb-5 h-8 flex items-center"
+          >
+            <span className="text-accent font-mono mr-2">{'>'}</span>
+            <Typewriter phrases={ROLES} className="text-ink" />
+          </motion.p>
 
           {/* ── Tagline ── */}
           {personal.tagline && (
@@ -82,30 +121,38 @@ const Hero: React.FC = () => {
             className="flex flex-wrap gap-3 mb-8"
           >
             {/* Primary: Resume */}
-            <a
-              href={personal.resumeUrl}
-              download="Namit_Rathod_Resume.pdf"
-              className="btn-accent gap-2"
-              id="hero-resume-btn"
-            >
-              <FileText size={14} strokeWidth={2} />
-              Download Resume
-            </a>
+            <Magnetic>
+              <motion.a
+                whileTap={{ scale: 0.96 }}
+                href={personal.resumeUrl}
+                download="Namit_Rathod_Resume.pdf"
+                className="btn-accent gap-2 hover:shadow-card-hover"
+                id="hero-resume-btn"
+              >
+                <FileText size={14} strokeWidth={2} />
+                Download Resume
+              </motion.a>
+            </Magnetic>
 
             {/* Ghost: LinkedIn */}
-            <a
-              href={personal.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost"
-              id="hero-linkedin-btn"
-            >
-              <Linkedin size={14} strokeWidth={2} />
-              LinkedIn
-            </a>
+            <Magnetic>
+              <motion.a
+                whileTap={{ scale: 0.96 }}
+                href={personal.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                id="hero-linkedin-btn"
+              >
+                <Linkedin size={14} strokeWidth={2} />
+                LinkedIn
+              </motion.a>
+            </Magnetic>
 
             {/* Copy Email Button */}
-            <button
+            <Magnetic>
+            <motion.button
+              whileTap={{ scale: 0.96 }}
               onClick={async () => {
                 try {
                   await navigator.clipboard.writeText(personal.email);
@@ -130,19 +177,23 @@ const Hero: React.FC = () => {
             >
               <Mail size={14} strokeWidth={2} />
               Copy Email
-            </button>
+            </motion.button>
+            </Magnetic>
 
             {/* Ghost: GitHub */}
-            <a
-              href={personal.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-ghost"
-              id="hero-github-btn"
-            >
-              <Github size={14} strokeWidth={2} />
-              GitHub
-            </a>
+            <Magnetic>
+              <motion.a
+                whileTap={{ scale: 0.96 }}
+                href={personal.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost"
+                id="hero-github-btn"
+              >
+                <Github size={14} strokeWidth={2} />
+                GitHub
+              </motion.a>
+            </Magnetic>
           </motion.div>
 
           {/* ── Credibility chips ── */}
@@ -175,9 +226,9 @@ const Hero: React.FC = () => {
           <ArrowDown
             size={13}
             strokeWidth={1.5}
-            className="group-hover:translate-y-0.5 transition-transform duration-200"
+            className="animate-bob group-hover:text-accent transition-colors duration-200"
           />
-          <span>Keep reading</span>
+          <span className="group-hover:text-accent transition-colors duration-200">Keep reading</span>
         </motion.div>
       </div>
     </section>

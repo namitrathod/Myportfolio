@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData } from '../data/portfolio.ts';
 
 // ─── Navigation links ──────────────────────────────────────────────────────
@@ -48,10 +49,15 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200
-        bg-canvas border-b
-        ${scrolled ? 'border-border shadow-sm' : 'border-transparent'}`}
+    <motion.header
+      initial={{ y: -64, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+        border-b backdrop-blur-md
+        ${scrolled
+          ? 'bg-canvas/80 border-border shadow-sm'
+          : 'bg-canvas/60 border-transparent'}`}
     >
       <div className="page-container">
         <div className="flex items-center justify-between h-14">
@@ -88,9 +94,13 @@ const Header: React.FC = () => {
                     }`}
                 >
                   {link.label}
-                  {/* Active underline indicator */}
+                  {/* Active underline indicator – slides between links */}
                   {isActive && (
-                    <span className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-accent" />
+                    <motion.span
+                      layoutId="nav-underline"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      className="absolute bottom-0 left-3 right-3 h-0.5 rounded-full bg-accent"
+                    />
                   )}
                 </a>
               );
@@ -146,33 +156,44 @@ const Header: React.FC = () => {
       </div>
 
       {/* ── Mobile menu ── */}
-      {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-canvas">
-          <nav className="page-container py-3 flex flex-col gap-1">
-            {NAV_LINKS.map(link => (
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden overflow-hidden border-t border-border bg-canvas"
+          >
+            <nav className="page-container py-3 flex flex-col gap-1">
+              {NAV_LINKS.map((link, i) => (
+                <motion.a
+                  key={link.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 + i * 0.05 }}
+                  href={link.href}
+                  onClick={(e) => scrollTo(e, link.href)}
+                  className={`px-3 py-2 text-sm rounded transition-colors
+                    ${activeSection === link.href.slice(1)
+                      ? 'text-accent font-medium bg-accent/5'
+                      : 'text-ink-secondary hover:text-ink hover:bg-canvas-muted'
+                    }`}
+                >
+                  {link.label}
+                </motion.a>
+              ))}
               <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => scrollTo(e, link.href)}
-                className={`px-3 py-2 text-sm rounded transition-colors
-                  ${activeSection === link.href.slice(1)
-                    ? 'text-accent font-medium bg-accent/5'
-                    : 'text-ink-secondary hover:text-ink hover:bg-canvas-muted'
-                  }`}
+                href={`mailto:${portfolioData.personal.email}`}
+                className="mt-2 btn-accent text-xs self-start"
               >
-                {link.label}
+                Get in touch
               </a>
-            ))}
-            <a
-              href={`mailto:${portfolioData.personal.email}`}
-              className="mt-2 btn-accent text-xs self-start"
-            >
-              Get in touch
-            </a>
-          </nav>
-        </div>
-      )}
-    </header>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };
 
