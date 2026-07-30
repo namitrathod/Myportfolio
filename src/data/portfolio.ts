@@ -73,18 +73,18 @@ export const portfolioData: PortfolioData = {
   personal: {
     name: "Namit Rathod",
     initials: "NR",
-    role: "Software Engineer",
+    role: "AI/ML Engineer",
     tagline: "",
     sublines: [
-      "3+ years building scalable enterprise SaaS, from high-performance frontend architectures to robust, distributed backend systems.",
-      "MS Computer Science, University of Houston. Experienced at Cognizant and ScriptChain Health.",
+      "4+ years building production-ready machine learning solutions, scalable data pipelines, and optimized inference workflows.",
+      "MS Computer Science, University of Houston. Experienced at Berkshire Hathaway and Bosch.",
     ],
     about: [
-      "I'm an AI Engineer and full-stack software engineer with 3+ years of experience building production systems at the intersection of healthcare, agentic AI, and distributed backend infrastructure.",
-      "Most recently, I built an MCP server at ScriptChain Health that connected FHIR patient records and a proprietary food and exercise database as Claude-callable tools, enabling a LangGraph-based agentic platform to generate fully personalized cardiac care plans grounded in each patient's live medical history. I also integrated NVIDIA NeMo Guardrails to enforce 100% clinical guideline compliance across all AI outputs.",
-      "At Nasafitness, I engineered an Azure OpenAI GPT-4o pipeline that eliminated manual clinical documentation for 100+ patient sessions, built a context pruning algorithm that improved inference accuracy while cutting token costs by 80%, and used Semantic Kernel to guarantee deterministic JSON output for seamless EHR integration.",
-      "My core stack spans Python, Java, C#, FastAPI, .NET 8, React, GraphQL, LangGraph, and cloud infrastructure on AWS and Azure. I'm deeply interested in agentic AI systems, LLM orchestration, and building AI products that work reliably in high-stakes domains like healthcare.",
-      "Completed my M.S. in Computer Science at the University of Houston-Clear Lake (GPA: 3.52) and actively seeking full-time AI Engineer roles globally, open to US, Canada, UAE, Singapore, Germany, and Ireland.",
+      "I'm an AI/ML Engineer with a strong background in developing scalable predictive models, automating data preparation workflows, and optimizing inference pipelines for enterprise operational workflows.",
+      "Most recently, at Berkshire Hathaway, I designed machine learning solutions to improve business decision-making and built scalable model training and deployment pipelines, reducing delivery times by 35%. I also optimized inference workflows to decrease prediction response time by 40% for internal enterprise users.",
+      "Prior to that, at Bosch, I built predictive ML models to enhance manufacturing process quality and engineered automated data preparation workflows that cut manual processing effort by 55% while improving training dataset consistency.",
+      "My technical expertise spans Python, PyTorch, Scikit-Learn, XGBoost, MLOps, vector databases, FastAPI, and PostgreSQL. I am passionate about bridging the gap between raw data and production-grade intelligent systems that deliver reliable business outcomes.",
+      "Completed my M.S. in Computer Science at the University of Houston and actively seeking full-time AI/ML Engineering roles.",
     ],
     email: "namitrathod07@gmail.com",
     phone: "+1-346-434-9556",
@@ -96,11 +96,11 @@ export const portfolioData: PortfolioData = {
   },
 
   credibilityChips: [
-    "3+ yrs industry",
-    "ScriptChain Health",
-    "Cognizant Alumni",
+    "4+ yrs industry",
+    "Berkshire Hathaway",
+    "Bosch Alumni",
     "MS CS, UH",
-    "Frontend · Backend · Full-Stack",
+    "Predictive Modeling · MLOps",
     "Open to Relocation",
   ],
 
