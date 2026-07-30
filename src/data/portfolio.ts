@@ -90,7 +90,7 @@ export const portfolioData: PortfolioData = {
     phone: "+1-346-434-9556",
     linkedin: "https://www.linkedin.com/in/namit-rathod",
     github: "https://github.com/namitrathod",
-    location: "Houston, TX (Open to Relocation)",
+    location: "Seattle, WA (Open to Relocation)",
     resumeUrl: "/Namit_Rathod_Resume.pdf",
     resumePreviewUrl: "https://rxresu.me/namit.rathod07/namit-rathod",
   },
@@ -141,40 +141,15 @@ export const portfolioData: PortfolioData = {
       liveUrl: "",
       featured: true,
     },
-    // ── Featured ──────────────────────────────────────────────────────────────
-    {
-      id: "settlement-engine",
-      title: "High-Throughput Settlement Engine",
-      description:
-        "Payment systems require extreme reliability and speed. I engineered this engine using Java 21 Virtual Threads and Spring Boot 3.2 to handle high-concurrency financial transactions. It features a distributed idempotency layer with Redis, a self-healing concurrency handler with Spring Retry (@Version), and an event-driven workflow using Apache Kafka.",
-      result: "Benchmarked at 1,000+ RPS with 100% success rate via Gatling; zero 'double-charge' incidents ensured by sub-millisecond Redis idempotency intercepts.",
-      technologies: ["Java 21", "Spring Boot", "Kafka", "Redis", "PostgreSQL", "OpenTelemetry", "Gatling", "Docker"],
-      track: "Backend",
-      githubUrl: "https://github.com/namitrathod/High-Throughput-Settlement-Engine",
-      liveUrl: "",
-      featured: true,
-    },
     {
       id: "hiresphere",
-      title: "HireSphere - Recruiter Platform",
+      title: "HireSphere - AI Recruiter Platform",
       description:
         "Recruiting is a data problem. I built HireSphere to turn messy, unstructured PDF resumes into validated structured data using LLMs. It features a Next.js dashboard with memoized rendering and a FastAPI backend with Redis task queues for high-throughput processing.",
       result: "Dashboard handles 1,000+ candidate profiles without UI lag; LLM token cost reduced 30%, page load improved 40%.",
       technologies: ["Next.js", "React", "TypeScript", "Context API", "FastAPI", "PostgreSQL", "Redis", "Celery"],
-      track: "Full-Stack",
+      track: "AI / Systems",
       githubUrl: "https://github.com/namitrathod",
-      liveUrl: "",
-      featured: false,
-    },
-    {
-      id: "capstone-healthcare",
-      title: "Healthcare Clinic Platform (Capstone Project)",
-      description:
-        "Bridging legacy systems to modern standards. I modernized a legacy ASP.NET healthcare system by architecting an entirely new React frontend and a decoupled .NET Core Web API, significantly improving UI speed and reducing integration errors.",
-      result: "40% faster frontend feature iterations; noticeably faster UI interactions after render optimization.",
-      technologies: ["React", "Next.js", "TypeScript", ".NET Core Web API", "ASP.NET MVC", "PostgreSQL", "Azure"],
-      track: "Full-Stack",
-      githubUrl: "", // Removed as requested
       liveUrl: "",
       featured: true,
     },
@@ -190,7 +165,6 @@ export const portfolioData: PortfolioData = {
       liveUrl: "",
       featured: true,
     },
-    // ── Additional ────────────────────────────────────────────────────────────
     {
       id: "ai-form-assistant",
       title: "AI Form Automation Agent",
@@ -217,37 +191,13 @@ export const portfolioData: PortfolioData = {
     },
     {
       id: "lms",
-      title: "Learning Management System",
+      title: "Learning Management System (LLM Orchestration)",
       description:
         "Java middleware with strict type-safe schema validation for unstructured LLM outputs. Shadow Database testing for zero-downtime schema changes. Adversarial defense prompt strategy to eliminate hallucinations on the learner dashboard.",
       result: "99.9% uptime; LLM inference cost reduced 30% via client-side context pruning.",
       technologies: ["Java", "Spring Boot", "LLM Integration", "JSON Schema", "Shadow DB Testing"],
       track: "Backend",
       githubUrl: "https://github.com/namitrathod/LMS",
-      liveUrl: "",
-      featured: false,
-    },
-    {
-      id: "email-subscription",
-      title: "Modern Email Subscription Platform",
-      description:
-        "Engineered a production-ready subscription engine focusing on data integrity and automated user engagement. Built with Next.js and TypeScript, it features a robust backend for capturing user intent and automating transactional workflows.",
-      result: "Integrated MySQL connection pooling and Nodemailer via Mailtrap, ensuring 100% email delivery verification and secure data handling in a modular App Router architecture.",
-      technologies: ["Next.js", "TypeScript", "MySQL", "Node.js", "Nodemailer", "Tailwind CSS"],
-      track: "Full-Stack",
-      githubUrl: "https://github.com/namitrathod/email-system",
-      liveUrl: "",
-      featured: false,
-    },
-    {
-      id: "cabgo",
-      title: "CabGo - Ride-Hailing Ecosystem",
-      description:
-        "Architected a high-concurrency MERN stack application for real-time ride-hailing. The platform features low-latency, bi-directional communication between drivers and riders, optimized for mobile-first user experiences.",
-      result: "Implemented real-time event streaming via Socket.io for instantaneous ride requests and live location tracking; secured multi-role workflows with JWT and optimized asset handling with Cloudinary.",
-      technologies: ["React", "Node.js", "Express.js", "MongoDB", "Socket.io", "Cloudinary", "Zustand"],
-      track: "Full-Stack",
-      githubUrl: "https://github.com/namitrathod/cabgo",
       liveUrl: "",
       featured: false,
     },
@@ -262,18 +212,6 @@ export const portfolioData: PortfolioData = {
       githubUrl: "https://github.com/namitrathod/brochure_builder",
       liveUrl: "",
       featured: false,
-    },
-    {
-      id: "distributed-job-system",
-      title: "Distributed Job Processing System",
-      description:
-        "Designed and built a distributed job processing system in Go processing 100K+ asynchronous tasks with priority scheduling and scalable worker pools. Architected a Kafka-based task pipeline for reliable delivery and automatic load distribution; implemented retry backoff, dead-letter queues, and idempotent execution for fault tolerance.",
-      result: "Reduced state lookup latency by 60% with Redis caching; deployed on Kubernetes with autoscaling policies and integrated Prometheus/Grafana for real-time observability.",
-      technologies: ["Go", "Kafka", "Redis", "Kubernetes", "Prometheus", "Grafana", "Docker"],
-      track: "Backend",
-      githubUrl: "https://github.com/namitrathod",
-      liveUrl: "",
-      featured: true,
     },
   ],
 
@@ -314,20 +252,20 @@ export const portfolioData: PortfolioData = {
 
   skillGroups: [
     {
-      category: "Frontend",
-      skills: ["React", "Next.js (App Router)", "TypeScript", "Angular", "Redux Toolkit", "Zustand", "Context API", "RxJS", "Tailwind CSS", "Fluent UI", "Web Vitals", "A11y / WCAG"],
+      category: "Machine Learning & DL",
+      skills: ["Python", "PyTorch", "Scikit-Learn", "XGBoost", "Pandas", "NumPy", "Feature Engineering", "Statistical Analysis", "Data Preprocessing"],
     },
     {
-      category: "Backend",
-      skills: ["Go", "Node.js", "FastAPI", "Python", "Java (Spring Boot)", "Express.js", "Prisma", "REST APIs", "GraphQL", "OAuth 2.0", "JWT", "Celery", "BFF Pattern", "API Versioning"],
+      category: "Generative AI & NLP",
+      skills: ["GPT-4o", "Gemini 2.5", "LangChain", "Prompt Engineering", "Structured Outputs", "RAG", "Vector Search (FAISS, ChromaDB)", "Tool Calling", "Whisper ASR", "Hugging Face"],
     },
     {
-      category: "Data & Infrastructure",
-      skills: ["PostgreSQL", "MongoDB", "Redis", "Apache Kafka", "MySQL", "ChromaDB", "AWS (S3, DynamoDB, SES)", "Docker", "Kubernetes", "Azure", "GitHub Actions", "OpenTelemetry", "CI/CD", "Structured Logging"],
+      category: "MLOps & Infrastructure",
+      skills: ["FastAPI", "Docker", "Kubernetes", "PostgreSQL", "Redis", "Apache Kafka", "AWS", "Azure", "GitHub Actions", "CI/CD", "Model Monitoring", "Inference Optimization"],
     },
     {
-      category: "AI & LLM",
-      skills: ["GPT-4o", "Gemini 2.5", "LangChain", "Prompt Engineering", "Structured Outputs", "RAG", "Tool Calling", "Whisper ASR", "PyTorch", "Hugging Face", "Model Quantization (NF4)"],
+      category: "Languages & Frameworks",
+      skills: ["Python", "Java (Spring Boot)", "Go", "TypeScript", "React", "REST APIs", "GraphQL", "Data Structures & Algorithms"],
     },
   ],
 

@@ -7,10 +7,10 @@ import Magnetic from './Magnetic.tsx';
 
 // Roles cycled through by the hero typewriter
 const ROLES = [
-  'Full-Stack Engineer',
-  'Backend Systems Architect',
-  'Frontend Performance Specialist',
   'AI/ML Engineer',
+  'Machine Learning Engineer',
+  'AI Engineer',
+  'Software Engineer'
 ];
 
 // ─── Stagger container + child variants ────────────────────────────────────
@@ -43,10 +43,8 @@ const Hero: React.FC = () => {
       id="home"
       className="relative min-h-screen flex flex-col justify-center pt-14 overflow-hidden"
     >
-      {/* ── Decorative animated background ── */}
-      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden>
-        <div className="absolute -top-24 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl animate-blob" />
-        <div className="absolute top-1/3 -right-16 h-80 w-80 rounded-full bg-accent-light/10 blur-3xl animate-blob-slow" />
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute top-1/4 right-1/4 h-72 w-72 rounded-full bg-accent/5 blur-3xl" />
         <div className="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-panel-tint/70 blur-3xl animate-float-slow" />
         {/* Faint dotted grid for texture */}
         <div
@@ -74,7 +72,7 @@ const Hero: React.FC = () => {
             variants={itemVariants}
             className="section-label mb-6"
           >
-            Software Engineer · {personal.location}
+            {personal.role} · {personal.location}
           </motion.p>
 
           {/* ── Name ── */}
@@ -151,33 +149,33 @@ const Hero: React.FC = () => {
 
             {/* Copy Email Button */}
             <Magnetic>
-            <motion.button
-              whileTap={{ scale: 0.96 }}
-              onClick={async () => {
-                try {
-                  await navigator.clipboard.writeText(personal.email);
-                  // Quick visual feedback
-                  const btn = document.getElementById("hero-email-btn");
-                  if (btn) {
-                    const originalText = btn.innerHTML;
-                    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent Lucide LucideCheck"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
-                    btn.classList.add("text-accent");
-                    setTimeout(() => {
-                      btn.innerHTML = originalText;
-                      btn.classList.remove("text-accent");
-                    }, 2000);
+              <motion.button
+                whileTap={{ scale: 0.96 }}
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(personal.email);
+                    // Quick visual feedback
+                    const btn = document.getElementById("hero-email-btn");
+                    if (btn) {
+                      const originalText = btn.innerHTML;
+                      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent Lucide LucideCheck"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!`;
+                      btn.classList.add("text-accent");
+                      setTimeout(() => {
+                        btn.innerHTML = originalText;
+                        btn.classList.remove("text-accent");
+                      }, 2000);
+                    }
+                  } catch (err) {
+                    // Fallback
+                    window.location.href = `mailto:${personal.email}`;
                   }
-                } catch (err) {
-                  // Fallback
-                  window.location.href = `mailto:${personal.email}`;
-                }
-              }}
-              className="btn-ghost"
-              id="hero-email-btn"
-            >
-              <Mail size={14} strokeWidth={2} />
-              Copy Email
-            </motion.button>
+                }}
+                className="btn-ghost"
+                id="hero-email-btn"
+              >
+                <Mail size={14} strokeWidth={2} />
+                Copy Email
+              </motion.button>
             </Magnetic>
 
             {/* Ghost: GitHub */}
@@ -202,8 +200,8 @@ const Hero: React.FC = () => {
             className="flex flex-wrap gap-2"
           >
             {credibilityChips.map((chip) => (
-              <span 
-                key={chip} 
+              <span
+                key={chip}
                 className={chip === "Open to Relocation" ? "chip-accent" : "chip"}
               >
                 {chip}

@@ -9,36 +9,51 @@ const About: React.FC = () => {
   // What each type of recruiter needs to see quickly
   const tracks = [
     {
-      label: 'Frontend',
+      label: 'Machine Learning',
       color: 'text-accent border-accent/20 bg-accent/5',
       dot: 'bg-accent',
-      points: ['React · Next.js · Angular · TypeScript', 'State management at scale (Redux, Zustand, Context)', 'Component perf: memoization, Lighthouse, Web Vitals', '1,000+ concurrent users, zero UI lag'],
+      points: [
+        'Python · PyTorch · Scikit-Learn · XGBoost',
+        'Feature engineering & cross-validation strategies',
+        'NumPy · Pandas · data preprocessing pipelines',
+        'Predictive modeling & statistical data analysis'
+      ],
     },
     {
-      label: 'Backend',
+      label: 'Generative AI',
       color: 'text-[#c27c3e] border-[#c27c3e]/20 bg-[#c27c3e]/5',
       dot: 'bg-[#c27c3e]',
-      points: ['FastAPI · Node.js · Java Spring Boot', 'PostgreSQL · Redis · MongoDB · AWS', 'OAuth 2.0 · JWT · async task pipelines', 'API design, query optimization, secure auth'],
+      points: [
+        'GPT-4o · Gemini 2.5 · LangChain · OpenAI APIs',
+        'RAG pipelines & FAISS/ChromaDB vector search',
+        'Prompt engineering & structured JSON outputs',
+        'Semantic retrieval & context-aware document QA'
+      ],
     },
     {
-      label: 'Full-Stack',
+      label: 'MLOps & Systems',
       color: 'text-[#5b6fa6] border-[#5b6fa6]/20 bg-[#5b6fa6]/5',
       dot: 'bg-[#5b6fa6]',
-      points: ['End-to-end ownership: API → UI → telemetry', '3+ years in production SaaS environments', 'Cross-functional: product, design, backend teams', 'CI/CD · Azure · Docker · GitHub Actions'],
+      points: [
+        'FastAPI · Docker · Kubernetes · PostgreSQL · Redis',
+        'Model training, deployment & monitoring pipelines',
+        'Inference optimization & response latency reduction',
+        'GitHub Actions CI/CD & cloud infrastructure (AWS/Azure)'
+      ],
     },
   ];
 
   // Headline tools the user is actively working with
   const focusSkills = [
-    'MCP', 'LangGraph', 'Azure OpenAI', 'Claude', 'GPT-4o', 'NeMo Guardrails',
-    'FHIR', 'FastAPI', '.NET 8', 'RAG', 'GraphRAG', 'Semantic Kernel',
-    'Docker', 'CI/CD', 'HIPAA',
+    'Python', 'PyTorch', 'Scikit-Learn', 'XGBoost', 'LangChain',
+    'RAG', 'OpenAI API', 'Gemini 2.5', 'FAISS', 'ChromaDB',
+    'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'MLOps'
   ];
 
   const quickFacts = [
-    { label: 'Status',        value: 'Open to work · Seeking full-time AI Engineer roles' },
-    { label: 'Focus',         value: 'Agentic AI · Healthcare' },
-    { label: 'Education',     value: 'M.S. Computer Science, UHCL' },
+    { label: 'Status',        value: 'Open to work · Seeking AI/ML Engineering roles' },
+    { label: 'Focus',         value: 'Machine Learning · Generative AI · MLOps' },
+    { label: 'Education',     value: 'M.S. Computer Science, University of Houston' },
     { label: 'Available',     value: 'Full-time, globally' },
   ];
 
