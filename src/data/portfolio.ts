@@ -90,7 +90,7 @@ export const portfolioData: PortfolioData = {
     phone: "+1-346-434-9556",
     linkedin: "https://www.linkedin.com/in/namit-rathod",
     github: "https://github.com/namitrathod",
-    location: "Houston, TX (Open to Relocation · Nationwide)",
+    location: "Houston, TX (Open to Relocation)",
     resumeUrl: "/Namit_Rathod_Resume.pdf",
     resumePreviewUrl: "https://rxresu.me/namit.rathod07/namit-rathod",
   },
