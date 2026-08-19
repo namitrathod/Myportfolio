@@ -9,14 +9,14 @@ const About: React.FC = () => {
   // What each type of recruiter needs to see quickly
   const tracks = [
     {
-      label: 'Machine Learning',
+      label: 'AI / Machine Learning',
       color: 'text-accent border-accent/20 bg-accent/5',
       dot: 'bg-accent',
       points: [
-        'Python · PyTorch · Scikit-Learn · XGBoost',
-        'Feature engineering & cross-validation strategies',
-        'NumPy · Pandas · data preprocessing pipelines',
-        'Predictive modeling & statistical data analysis'
+        'Python · PyTorch · TensorFlow · Hugging Face',
+        'QLoRA · PEFT · model fine-tuning',
+        'Validation · guardrails · structured outputs',
+        'Clinical NLP · ICD-10 classification'
       ],
     },
     {
@@ -24,37 +24,37 @@ const About: React.FC = () => {
       color: 'text-[#c27c3e] border-[#c27c3e]/20 bg-[#c27c3e]/5',
       dot: 'bg-[#c27c3e]',
       points: [
-        'GPT-4o · Gemini 2.5 · LangChain · OpenAI APIs',
-        'RAG pipelines & FAISS/ChromaDB vector search',
-        'Prompt engineering & structured JSON outputs',
-        'Semantic retrieval & context-aware document QA'
+        'LLMs · RAG · GraphRAG · LangChain',
+        'Agentic and human-in-the-loop workflows',
+        'Context assembly from EHR and patient data',
+        'Grounded clinical content generation'
       ],
     },
     {
-      label: 'MLOps & Systems',
+      label: 'Data & MLOps',
       color: 'text-[#5b6fa6] border-[#5b6fa6]/20 bg-[#5b6fa6]/5',
       dot: 'bg-[#5b6fa6]',
       points: [
-        'FastAPI · Docker · Kubernetes · PostgreSQL · Redis',
-        'Model training, deployment & monitoring pipelines',
-        'Inference optimization & response latency reduction',
-        'GitHub Actions CI/CD & cloud infrastructure (AWS/Azure)'
+        'PySpark · Kafka · Airflow · ETL pipelines',
+        'FastAPI · Docker · Kubernetes · CI/CD',
+        'Monitored production AI services',
+        'AWS · Azure · scalable data infrastructure'
       ],
     },
   ];
 
   // Headline tools the user is actively working with
   const focusSkills = [
-    'Python', 'PyTorch', 'Scikit-Learn', 'XGBoost', 'LangChain',
-    'RAG', 'OpenAI API', 'Gemini 2.5', 'FAISS', 'ChromaDB',
-    'FastAPI', 'PostgreSQL', 'Redis', 'Docker', 'MLOps'
+    'Python', 'PyTorch', 'TensorFlow', 'Hugging Face', 'LangChain',
+    'RAG', 'GraphRAG', 'Agentic AI', 'QLoRA', 'PEFT', 'FastAPI',
+    'PySpark', 'Kafka', 'Airflow', 'Docker', 'Kubernetes', 'MLOps'
   ];
 
   const quickFacts = [
-    { label: 'Status',        value: 'Open to work · Seeking AI/ML Engineering roles' },
-    { label: 'Focus',         value: 'Machine Learning · Generative AI · MLOps' },
-    { label: 'Education',     value: 'M.S. Computer Science, University of Houston' },
-    { label: 'Available',     value: 'Full-time, globally' },
+    { label: 'Status',        value: 'Work authorized · Open to opportunities' },
+    { label: 'Focus',         value: 'AI/ML · Data Engineering · Software' },
+    { label: 'Education',     value: 'M.S. Computer Science, UHCL' },
+    { label: 'Location',      value: 'Greater Seattle Area · Open to relocation' },
   ];
 
   return (

@@ -5,10 +5,10 @@ import CountUp from './CountUp.tsx';
 
 // Headline metrics, counted up when scrolled into view
 const STATS = [
-  { to: 3,      suffix: '+',  label: 'Years Experience' },
-  { to: 1000,   suffix: '+',  label: 'Concurrent Users' },
-  { to: 100000, suffix: '+',  label: 'Tasks Processed' },
-  { to: 80,     suffix: '%',  label: 'Payload Reduced' },
+  { to: 4,    suffix: '+', label: 'Years Experience' },
+  { to: 4000, suffix: '+', label: 'Clinical Notes' },
+  { to: 94,   suffix: '%', label: 'ICD-10 Accuracy' },
+  { to: 5,    suffix: '',  label: 'Career Roles' },
 ];
 
 // ─── Individual experience entry ───────────────────────────────────────────

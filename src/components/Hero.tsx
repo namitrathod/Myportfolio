@@ -8,8 +8,8 @@ import Magnetic from './Magnetic.tsx';
 // Roles cycled through by the hero typewriter
 const ROLES = [
   'AI/ML Engineer',
-  'Machine Learning Engineer',
   'AI Engineer',
+  'Data Engineer',
   'Software Engineer'
 ];
 
