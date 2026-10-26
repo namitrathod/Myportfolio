@@ -11,14 +11,19 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  html,
+  body {
+    /* Let the document own vertical scroll — avoids “first swipe ignored” on iOS */
+    touch-action: pan-y;
+    width: 100%;
+  }
+
   body {
     font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
     background-color: #F5F5F7;
     color: #1D1D1F;
     font-size: 17px;
     line-height: 1.55;
-    overscroll-behavior-y: none;
-    /* Keep scroll on the compositor; avoid layout thrash while animating */
     -webkit-overflow-scrolling: touch;
   }
 

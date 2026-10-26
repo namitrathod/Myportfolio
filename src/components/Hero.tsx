@@ -40,9 +40,9 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden">
-      {/* Full-bleed atmospheric plane */}
-      <div className="absolute inset-0 hero-mesh md:animate-mesh" aria-hidden />
+    <section id="home" className="relative min-h-[100svh] flex flex-col justify-center">
+      {/* Full-bleed atmospheric plane — must not capture touch or first swipe fails on mobile */}
+      <div className="absolute inset-0 hero-mesh md:animate-mesh pointer-events-none" aria-hidden />
       <div
         className="absolute inset-0 opacity-[0.35] pointer-events-none"
         aria-hidden

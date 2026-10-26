@@ -12,7 +12,7 @@ const ScrollProgress: React.FC = () => {
   return (
     <motion.div
       style={{ scaleX }}
-      className="fixed top-0 left-0 right-0 z-[60] h-0.5 origin-left bg-accent will-change-transform"
+      className="pointer-events-none fixed top-0 left-0 right-0 z-[60] h-0.5 origin-left bg-accent will-change-transform"
       aria-hidden
     />
   );

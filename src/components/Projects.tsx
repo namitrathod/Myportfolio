@@ -154,7 +154,7 @@ const Projects: React.FC = () => {
   const tracks = Object.keys(TRACK_CONFIG) as ProjectTrack[];
 
   return (
-    <section id="projects" className="section-pad overflow-hidden">
+    <section id="projects" className="section-pad">
       <div className="page-container">
         <Reveal className="mb-14">
           <p className="section-label mb-4">Selected work</p>

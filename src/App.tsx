@@ -14,7 +14,7 @@ import ScrollProgress from './components/ScrollProgress.tsx';
 function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="min-h-screen bg-canvas text-ink overflow-x-hidden">
+      <div className="min-h-screen bg-canvas text-ink overflow-x-clip">
         <ScrollProgress />
         <Header />
         <main>
