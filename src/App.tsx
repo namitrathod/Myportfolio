@@ -9,17 +9,13 @@ import Skills from './components/Skills.tsx';
 import Contact from './components/Contact.tsx';
 import Footer from './components/Footer.tsx';
 import ScrollProgress from './components/ScrollProgress.tsx';
-import Spotlight from './components/Spotlight.tsx';
 
 // ─── App Root ───────────────────────────────────────────────────────────────
-// Section order: Hero → About → Projects → Experience → Skills → Contact
-// MotionConfig with reducedMotion="user" honors the OS "reduce motion" setting.
 function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <div className="min-h-screen bg-canvas text-ink">
+      <div className="min-h-screen bg-canvas text-ink overflow-x-hidden">
         <ScrollProgress />
-        <Spotlight />
         <Header />
         <main>
           <Hero />

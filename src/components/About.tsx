@@ -1,186 +1,135 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolio.ts';
+import Reveal from './Reveal.tsx';
 
-// ─── About Section ─────────────────────────────────────────────────────────
 const About: React.FC = () => {
   const { personal, education } = portfolioData;
 
-  // What each type of recruiter needs to see quickly
   const tracks = [
     {
       label: 'AI / Machine Learning',
-      color: 'text-accent border-accent/20 bg-accent/5',
-      dot: 'bg-accent',
       points: [
         'Python · PyTorch · TensorFlow · Hugging Face',
         'QLoRA · PEFT · model fine-tuning',
         'Validation · guardrails · structured outputs',
-        'Clinical NLP · ICD-10 classification'
+        'Clinical NLP · ICD-10 classification',
       ],
     },
     {
       label: 'Generative AI',
-      color: 'text-[#c27c3e] border-[#c27c3e]/20 bg-[#c27c3e]/5',
-      dot: 'bg-[#c27c3e]',
       points: [
         'LLMs · RAG · GraphRAG · LangChain',
         'Agentic and human-in-the-loop workflows',
         'Context assembly from EHR and patient data',
-        'Grounded clinical content generation'
+        'Grounded clinical content generation',
       ],
     },
     {
       label: 'Data & MLOps',
-      color: 'text-[#5b6fa6] border-[#5b6fa6]/20 bg-[#5b6fa6]/5',
-      dot: 'bg-[#5b6fa6]',
       points: [
         'PySpark · Kafka · Airflow · ETL pipelines',
         'FastAPI · Docker · Kubernetes · CI/CD',
         'Monitored production AI services',
-        'AWS · Azure · scalable data infrastructure'
+        'AWS · Azure · scalable data infrastructure',
       ],
     },
   ];
 
-  // Headline tools the user is actively working with
   const focusSkills = [
     'Python', 'PyTorch', 'TensorFlow', 'Hugging Face', 'LangChain',
     'RAG', 'GraphRAG', 'Agentic AI', 'QLoRA', 'PEFT', 'FastAPI',
-    'PySpark', 'Kafka', 'Airflow', 'Docker', 'Kubernetes', 'MLOps'
+    'PySpark', 'Kafka', 'Airflow', 'Docker', 'Kubernetes', 'MLOps',
   ];
 
   const quickFacts = [
-    { label: 'Status',        value: 'Work authorized · Open to opportunities' },
-    { label: 'Focus',         value: 'AI/ML · Data Engineering · Software' },
-    { label: 'Education',     value: 'M.S. Computer Science, UHCL' },
-    { label: 'Location',      value: 'Greater Seattle Area · Open to relocation' },
+    { label: 'Status', value: 'Work authorized · Open to opportunities' },
+    { label: 'Focus', value: 'Software Engineer · Applied AI' },
+    { label: 'Education', value: 'M.S. Computer Science, UHCL' },
+    { label: 'Location', value: 'USA · Open to relocate' },
   ];
 
   return (
-    <section id="about" className="section-pad border-t border-border">
+    <section id="about" className="section-pad">
       <div className="page-container">
-        <div className="grid grid-cols-1 lg:grid-cols-[200px_1fr] gap-12 lg:gap-20">
+        <Reveal>
+          <p className="section-label mb-4">About</p>
+          <h2 className="heading-lg max-w-2xl mb-14">
+            Building AI that holds up in production.
+          </h2>
+        </Reveal>
 
-          {/* ── Left label col ── */}
-          <motion.div
-            initial={{ opacity: 0, x: -8 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <p className="section-label">About</p>
-          </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-14 lg:gap-20">
+          <Reveal delay={0.08} className="space-y-5 text-ink-secondary text-[17px] leading-relaxed">
+            {personal.about.map((paragraph, i) => (
+              <p key={i}>{paragraph}</p>
+            ))}
+          </Reveal>
 
-          {/* ── Right content col ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.05 }}
-            viewport={{ once: true }}
-            className="max-w-2xl"
-          >
-            {/* Paragraphs */}
-            <div className="space-y-4 text-ink-secondary leading-relaxed text-[15px]">
-              {personal.about.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
-            </div>
-
-            {/* ── Core focus chips ── */}
-            <div className="mt-6">
-              <p className="text-xs font-mono tracking-widest uppercase text-ink-faint mb-3">
-                Core Focus
-              </p>
-              <motion.div
-                className="flex flex-wrap gap-2"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, margin: '-40px' }}
-                variants={{
-                  hidden: {},
-                  visible: { transition: { staggerChildren: 0.03 } },
-                }}
-              >
-                {focusSkills.map(skill => (
-                  <motion.span
-                    key={skill}
-                    variants={{
-                      hidden: { opacity: 0, y: 8 },
-                      visible: { opacity: 1, y: 0 },
-                    }}
-                    whileHover={{ y: -2, scale: 1.05 }}
-                    transition={{ type: 'spring', stiffness: 400, damping: 18 }}
-                    className="chip-accent cursor-default"
-                  >
-                    {skill}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
-
-            {/* ── 3-Track strength strip ── */}
-            <motion.div
-              className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.12 } },
-              }}
-            >
-              {tracks.map(track => (
-                <motion.div
-                  key={track.label}
-                  variants={{
-                    hidden: { opacity: 0, y: 16 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-                  }}
-                  whileHover={{ y: -4 }}
-                  className={`rounded-lg border p-4 transition-shadow hover:shadow-card-hover ${track.color}`}
-                >
-                  <p className="text-[11px] font-mono tracking-widest uppercase font-semibold mb-3">
-                    {track.label}
-                  </p>
-                  <ul className="space-y-1.5">
-                    {track.points.map(pt => (
-                      <li key={pt} className="flex items-start gap-2 text-[12px] leading-snug text-ink-secondary">
-                        <span className={`mt-[5px] w-1 h-1 rounded-full shrink-0 ${track.dot}`} />
-                        {pt}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* Education callout strip */}
-            <div className="mt-6 p-4 rounded-lg border border-accent/15 bg-panel-tint">
-              <p className="text-xs font-mono tracking-wide uppercase text-ink-faint mb-1">
-                Education
-              </p>
-              <p className="text-sm font-semibold text-ink">{education.degree}</p>
-              <p className="text-sm text-accent font-medium">{education.institution} · {education.period}</p>
-              <div className="mt-2 flex flex-wrap gap-1.5">
-                {education.coursework.map(c => (
-                  <span key={c} className="chip-accent text-xs">{c}</span>
+          <Reveal delay={0.15}>
+            <div className="panel p-6 lg:p-7">
+              <p className="section-label mb-3">Education</p>
+              <p className="font-display text-lg font-semibold text-ink tracking-tight">{education.degree}</p>
+              <p className="text-accent font-medium mt-1">{education.institution}</p>
+              <p className="text-sm text-ink-muted mt-0.5">{education.period}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {education.coursework.map((c) => (
+                  <span key={c} className="chip">{c}</span>
                 ))}
               </div>
             </div>
-
-            {/* Quick facts strip */}
-            <div className="mt-6 pt-6 border-t border-border grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-              {quickFacts.map(({ label, value }) => (
-                <div key={label}>
-                  <p className="text-xs text-ink-faint mb-0.5 font-mono tracking-wide uppercase">{label}</p>
-                  <p className="text-sm text-ink font-medium leading-snug">{value}</p>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-
+          </Reveal>
         </div>
+
+        <Reveal delay={0.1} className="mt-14">
+          <p className="section-label mb-4">Core focus</p>
+          <div className="flex flex-wrap gap-2">
+            {focusSkills.map((skill, i) => (
+              <motion.span
+                key={skill}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.02, duration: 0.4 }}
+                whileHover={{ y: -2 }}
+                className="chip-accent cursor-default"
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </div>
+        </Reveal>
+
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {tracks.map((track, i) => (
+            <Reveal key={track.label} delay={0.08 * i}>
+              <motion.div
+                whileHover={{ y: -4 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 22 }}
+                className="panel p-6 h-full"
+              >
+                <p className="font-display text-[15px] font-semibold text-ink mb-4">{track.label}</p>
+                <ul className="space-y-2.5">
+                  {track.points.map((pt) => (
+                    <li key={pt} className="flex items-start gap-2.5 text-[13px] text-ink-secondary leading-snug">
+                      <span className="mt-1.5 w-1 h-1 rounded-full bg-accent shrink-0" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal className="mt-12 pt-10 border-t border-border/70 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {quickFacts.map(({ label, value }) => (
+            <div key={label}>
+              <p className="section-label mb-2 !normal-case !tracking-wide">{label}</p>
+              <p className="text-[15px] text-ink font-medium leading-snug">{value}</p>
+            </div>
+          ))}
+        </Reveal>
       </div>
     </section>
   );

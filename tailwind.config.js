@@ -6,45 +6,42 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Warm off-white base
         canvas: {
-          DEFAULT: '#F7F5F2',
-          soft: '#F0EDE8',
-          muted: '#E8E4DD',
+          DEFAULT: '#F5F5F7',
+          soft: '#EFEFF2',
+          muted: '#E8E8ED',
         },
-        // Charcoal text system
         ink: {
-          DEFAULT: '#1C1C1C',
-          secondary: '#4A4A4A',
-          muted: '#6E6E6E',
-          faint: '#9A9A9A',
+          DEFAULT: '#1D1D1F',
+          secondary: '#424245',
+          muted: '#6E6E73',
+          faint: '#86868B',
         },
-        // Single accent: deep forest green
         accent: {
-          DEFAULT: '#2D6A4F',
-          light: '#3D8B68',
-          pale: '#E8F4EE',
-          dark: '#1B4332',
+          DEFAULT: '#0071E3',
+          light: '#2997FF',
+          pale: '#E8F2FC',
+          dark: '#0077ED',
         },
-        // Neutral borders and panels
         border: {
-          DEFAULT: '#DDD9D3',
-          light: '#EAE7E2',
-          dark: '#C4BFB8',
+          DEFAULT: '#D2D2D7',
+          light: '#E8E8ED',
+          dark: '#B0B0B5',
         },
         panel: {
-          DEFAULT: '#EFECE7',
-          tint: '#EAF1ED',
+          DEFAULT: '#FFFFFF',
+          tint: '#FBFBFD',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        display: ['Outfit', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       fontSize: {
-        'display': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.03em' }],
-        'headline': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
-        'title': ['1.5rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
+        'display': ['clamp(2.75rem, 8vw, 5.5rem)', { lineHeight: '1.02', letterSpacing: '-0.045em', fontWeight: '600' }],
+        'headline': ['clamp(1.75rem, 4vw, 3rem)', { lineHeight: '1.1', letterSpacing: '-0.03em', fontWeight: '600' }],
+        'title': ['1.5rem', { lineHeight: '1.25', letterSpacing: '-0.02em' }],
       },
       spacing: {
         '18': '4.5rem',
@@ -53,24 +50,25 @@ module.exports = {
       },
       maxWidth: {
         'content': '720px',
-        'wide': '960px',
-        'full-content': '1200px',
+        'wide': '980px',
+        'full-content': '1120px',
+      },
+      transitionTimingFunction: {
+        apple: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+        'apple-out': 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       animation: {
-        'fade-up': 'fadeUp 0.5s ease-out forwards',
-        'fade-in': 'fadeIn 0.4s ease-out forwards',
-        'float': 'float 6s ease-in-out infinite',
-        'float-slow': 'float 9s ease-in-out infinite',
-        'blob': 'blob 18s ease-in-out infinite',
-        'blob-slow': 'blob 26s ease-in-out infinite',
-        'shimmer': 'shimmer 6s linear infinite',
-        'bob': 'bob 1.8s ease-in-out infinite',
+        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'float-slow': 'float 10s ease-in-out infinite',
+        'mesh': 'mesh 20s ease-in-out infinite',
+        'bob': 'bob 2s ease-in-out infinite',
         'caret-blink': 'caretBlink 1s steps(1) infinite',
       },
       keyframes: {
         fadeUp: {
-          '0%': { opacity: '0', transform: 'translateY(16px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+          '0%': { opacity: '0', transform: 'translateY(24px)', filter: 'blur(8px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0)' },
         },
         fadeIn: {
           '0%': { opacity: '0' },
@@ -78,21 +76,15 @@ module.exports = {
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
+          '50%': { transform: 'translateY(-14px)' },
         },
-        blob: {
-          '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
-          '33%': { transform: 'translate(24px, -32px) scale(1.08)' },
-          '66%': { transform: 'translate(-22px, 18px) scale(0.94)' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-          '100%': { backgroundPosition: '0% 50%' },
+        mesh: {
+          '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+          '50%': { transform: 'translate(2%, -3%) scale(1.05)' },
         },
         bob: {
           '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(4px)' },
+          '50%': { transform: 'translateY(5px)' },
         },
         caretBlink: {
           '0%, 50%': { opacity: '1' },
@@ -100,9 +92,10 @@ module.exports = {
         },
       },
       boxShadow: {
-        'card': '0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04)',
-        'card-hover': '0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.05)',
-        'panel': '0 0 0 1px rgba(0,0,0,0.05), 0 2px 8px rgba(0,0,0,0.04)',
+        'card': '0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03)',
+        'card-hover': '0 16px 40px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04)',
+        'panel': '0 0 0 1px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.04)',
+        'nav': '0 8px 30px rgba(0,0,0,0.06)',
       },
     },
   },
