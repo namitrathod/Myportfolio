@@ -51,7 +51,7 @@ const Header: React.FC = () => {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500
         ${scrolled
-          ? 'bg-canvas/70 backdrop-blur-2xl border-b border-border/40 shadow-nav'
+          ? 'bg-canvas/90 md:bg-canvas/80 md:backdrop-blur-xl border-b border-border/40 shadow-nav'
           : 'bg-transparent border-b border-transparent'}`}
     >
       <div className="page-container">
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           </a>
 
           <nav
-            className="hidden md:flex items-center gap-0.5 rounded-full bg-white/60 backdrop-blur-xl border border-border/50 px-1.5 py-1 shadow-card"
+            className="hidden md:flex items-center gap-0.5 rounded-full bg-white/80 border border-border/50 px-1.5 py-1 shadow-card"
             aria-label="Main navigation"
           >
             {NAV_LINKS.map((link) => {

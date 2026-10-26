@@ -14,9 +14,9 @@ const TRACK_CONFIG: Record<ProjectTrack, { icon: any; label: string }> = {
 
 const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => (
   <motion.div
-    initial={{ opacity: 0, y: 16, filter: 'blur(6px)' }}
-    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-    transition={{ duration: 0.45, delay: index * 0.05, ease: [0.16, 1, 0.3, 1] }}
+    initial={{ opacity: 0, y: 12 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.35, delay: index * 0.04, ease: [0.22, 1, 0.36, 1] }}
   >
     <TiltCard className="card p-6 flex flex-col gap-5 h-full">
       <div className="space-y-2">

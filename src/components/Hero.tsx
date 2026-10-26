@@ -13,12 +13,11 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 28, filter: 'blur(8px)' },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } as any,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } as any,
   },
 };
 
@@ -43,7 +42,7 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden">
       {/* Full-bleed atmospheric plane */}
-      <div className="absolute inset-0 hero-mesh animate-mesh" aria-hidden />
+      <div className="absolute inset-0 hero-mesh md:animate-mesh" aria-hidden />
       <div
         className="absolute inset-0 opacity-[0.35] pointer-events-none"
         aria-hidden

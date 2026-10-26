@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { portfolioData, Experience as ExperienceData } from '../data/portfolio.ts';
 import Reveal from './Reveal.tsx';
 
@@ -10,12 +10,8 @@ interface ExpEntryProps {
 }
 
 const ExpEntry: React.FC<ExpEntryProps> = ({ exp, isLast, index }) => (
-  <Reveal delay={index * 0.08} className={`relative pl-0 sm:pl-10 ${!isLast ? 'pb-12 mb-12 border-b border-border/60' : ''}`}>
-    <motion.span
-      initial={{ scale: 0 }}
-      whileInView={{ scale: 1 }}
-      transition={{ delay: 0.15, type: 'spring', stiffness: 400, damping: 16 }}
-      viewport={{ once: true }}
+  <Reveal delay={Math.min(index * 0.06, 0.18)} className={`relative pl-0 sm:pl-10 ${!isLast ? 'pb-12 mb-12 border-b border-border/60' : ''}`}>
+    <span
       className="hidden sm:block absolute left-0 top-1.5 w-2.5 h-2.5 rounded-full bg-accent ring-[6px] ring-canvas"
       aria-hidden
     />
@@ -49,46 +45,41 @@ const ExpEntry: React.FC<ExpEntryProps> = ({ exp, isLast, index }) => (
   </Reveal>
 );
 
-const Experience: React.FC = () => {
-  const timelineRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: timelineRef,
-    offset: ['start 80%', 'end 55%'],
-  });
-  const spineScale = useSpring(scrollYProgress, { stiffness: 100, damping: 28, restDelta: 0.001 });
+const Experience: React.FC = () => (
+  <section id="experience" className="section-pad bg-white/50">
+    <div className="page-container">
+      <Reveal>
+        <p className="section-label mb-4">Experience</p>
+        <h2 className="heading-lg max-w-xl mb-16">
+          Roles that shaped the work.
+        </h2>
+      </Reveal>
 
-  return (
-    <section id="experience" className="section-pad bg-white/50">
-      <div className="page-container">
-        <Reveal>
-          <p className="section-label mb-4">Experience</p>
-          <h2 className="heading-lg max-w-xl mb-16">
-            Roles that shaped the work.
-          </h2>
-        </Reveal>
+      <div className="relative">
+        {/* Static spine — no scroll-linked spring (that caused scroll jank) */}
+        <div className="hidden sm:block absolute left-[4px] top-2 bottom-2 w-px bg-border/80" aria-hidden />
+        <motion.div
+          initial={{ scaleY: 0 }}
+          whileInView={{ scaleY: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1] }}
+          className="hidden sm:block absolute left-[4px] top-2 bottom-2 w-px bg-accent origin-top"
+          aria-hidden
+        />
 
-        <div ref={timelineRef} className="relative">
-          <div className="hidden sm:block absolute left-[4px] top-2 bottom-2 w-px bg-border/80" aria-hidden />
-          <motion.div
-            style={{ scaleY: spineScale }}
-            className="hidden sm:block absolute left-[4px] top-2 bottom-2 w-px bg-accent origin-top"
-            aria-hidden
-          />
-
-          <div>
-            {portfolioData.experience.map((exp, i) => (
-              <ExpEntry
-                key={exp.id}
-                exp={exp}
-                isLast={i === portfolioData.experience.length - 1}
-                index={i}
-              />
-            ))}
-          </div>
+        <div>
+          {portfolioData.experience.map((exp, i) => (
+            <ExpEntry
+              key={exp.id}
+              exp={exp}
+              isLast={i === portfolioData.experience.length - 1}
+              index={i}
+            />
+          ))}
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Experience;

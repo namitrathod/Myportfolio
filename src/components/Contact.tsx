@@ -52,8 +52,8 @@ const Contact: React.FC = () => {
               <motion.div
                 key={label}
                 variants={{
-                  hidden: { opacity: 0, x: -16, filter: 'blur(6px)' },
-                  visible: { opacity: 1, x: 0, filter: 'blur(0px)', transition: { duration: 0.5 } },
+                  hidden: { opacity: 0, x: -10 },
+                  visible: { opacity: 1, x: 0, transition: { duration: 0.35 } },
                 }}
                 className="group flex items-center gap-4 p-3 -mx-3 rounded-2xl hover:bg-canvas-muted/70 transition-colors"
               >

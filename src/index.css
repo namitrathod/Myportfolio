@@ -5,7 +5,8 @@
 /* ─── Base ───────────────────────────────────────────────── */
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* Native scroll — CSS smooth fights trackpad/wheel and feels sticky */
+    scroll-behavior: auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -16,6 +17,9 @@
     color: #1D1D1F;
     font-size: 17px;
     line-height: 1.55;
+    overscroll-behavior-y: none;
+    /* Keep scroll on the compositor; avoid layout thrash while animating */
+    -webkit-overflow-scrolling: touch;
   }
 
   ::-webkit-scrollbar {
@@ -132,5 +136,12 @@
       radial-gradient(ellipse 70% 45% at 85% 15%, rgba(120, 140, 180, 0.14), transparent 50%),
       radial-gradient(ellipse 60% 40% at 50% 90%, rgba(0, 113, 227, 0.06), transparent 55%),
       linear-gradient(180deg, #F5F5F7 0%, #EEF1F6 50%, #F5F5F7 100%);
+  }
+
+  @media (max-width: 768px) {
+    /* Lighter continuous effects on phones */
+    .hero-mesh {
+      animation: none !important;
+    }
   }
 }
